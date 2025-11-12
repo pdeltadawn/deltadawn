@@ -20,21 +20,23 @@
         
         h1 {
             position: absolute;
-            top: 40px;
-            left: 50%;
-            transform: translateX(-50%);
             font-size: 2.5rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             color: #333;
             text-transform: uppercase;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             user-select: none;
+            white-space: nowrap;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
         }
         
-        h1.blasting {
-            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        h1.crumpled {
+            transform: scale(0.7) rotate(15deg);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3),
+                         -1px -1px 2px rgba(0,0,0,0.2),
+                         1px -1px 2px rgba(0,0,0,0.1);
+            filter: brightness(0.9);
         }
     </style>
 </head>
@@ -43,13 +45,25 @@
     
     <script>
         const title = document.getElementById('title');
+        
+        let x = window.innerWidth / 2;
+        let y = 40;
+        let vx = 0;
+        let vy = 0;
         let isBlasting = false;
+        
+        const rect = title.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        
+        title.style.left = x + 'px';
+        title.style.top = y + 'px';
         
         title.addEventListener('mouseenter', (e) => {
             if (isBlasting) return;
             
             isBlasting = true;
-            title.classList.add('blasting');
+            title.classList.add('crumpled');
             
             const rect = title.getBoundingClientRect();
             const centerX = rect.left + rect.width / 2;
@@ -65,25 +79,45 @@
             const normalizedX = deltaX / distance;
             const normalizedY = deltaY / distance;
             
-            const blastDistance = 300;
-            const newX = centerX + (normalizedX * blastDistance);
-            const newY = centerY + (normalizedY * blastDistance);
-            
-            title.style.left = newX + 'px';
-            title.style.top = newY + 'px';
-            title.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            const speed = 8;
+            vx = normalizedX * speed;
+            vy = normalizedY * speed;
             
             setTimeout(() => {
-                title.classList.remove('blasting');
-                title.style.left = '50%';
-                title.style.top = '40px';
-                title.style.transform = 'translateX(-50%) scale(1)';
-                
-                setTimeout(() => {
-                    isBlasting = false;
-                }, 300);
-            }, 600);
+                isBlasting = false;
+            }, 100);
         });
+        
+        function animate() {
+            const rect = title.getBoundingClientRect();
+            
+            x += vx;
+            y += vy;
+            
+            if (x <= 0 || x + rect.width >= window.innerWidth) {
+                vx = -vx;
+                x = x <= 0 ? 0 : window.innerWidth - rect.width;
+                title.classList.remove('crumpled');
+                setTimeout(() => title.classList.add('crumpled'), 50);
+            }
+            
+            if (y <= 0 || y + rect.height >= window.innerHeight) {
+                vy = -vy;
+                y = y <= 0 ? 0 : window.innerHeight - rect.height;
+                title.classList.remove('crumpled');
+                setTimeout(() => title.classList.add('crumpled'), 50);
+            }
+            
+            vx *= 0.99;
+            vy *= 0.99;
+            
+            title.style.left = x + 'px';
+            title.style.top = y + 'px';
+            
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
     </script>
 </body>
 </html>
