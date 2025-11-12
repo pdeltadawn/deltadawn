@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300&display=swap" rel="stylesheet"><meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Textile Archive</title>
     <style>
@@ -13,27 +13,77 @@
         
         body {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             background-color: #f5f5f5;
-            font-family: 'Playfair Display', serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            overflow: hidden;
         }
         
         h1 {
+            position: absolute;
+            top: 40px;
+            left: 50%;
+            transform: translateX(-50%);
             font-size: 2.5rem;
-            font-weight: 300;
+            font-weight: 700;
             letter-spacing: 0.1em;
             color: #333;
-            text-transform: lowercase;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            user-select: none;
+        }
+        
+        h1.blasting {
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
     </style>
 </head>
 <body>
-    <h1>textile archive</h1>
-
-    <b> Cool archive </b>
-    <u>textiles are fun</u>
+    <h1 id="title">Living Archive of Textiles + Fiber</h1>
     
+    <script>
+        const title = document.getElementById('title');
+        let isBlasting = false;
+        
+        title.addEventListener('mouseenter', (e) => {
+            if (isBlasting) return;
+            
+            isBlasting = true;
+            title.classList.add('blasting');
+            
+            const rect = title.getBoundingClientRect();
+            const centerX = rect.left + rect.width / 2;
+            const centerY = rect.top + rect.height / 2;
+            
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            const deltaX = centerX - mouseX;
+            const deltaY = centerY - mouseY;
+            
+            const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+            const normalizedX = deltaX / distance;
+            const normalizedY = deltaY / distance;
+            
+            const blastDistance = 300;
+            const newX = centerX + (normalizedX * blastDistance);
+            const newY = centerY + (normalizedY * blastDistance);
+            
+            title.style.left = newX + 'px';
+            title.style.top = newY + 'px';
+            title.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            
+            setTimeout(() => {
+                title.classList.remove('blasting');
+                title.style.left = '50%';
+                title.style.top = '40px';
+                title.style.transform = 'translateX(-50%) scale(1)';
+                
+                setTimeout(() => {
+                    isBlasting = false;
+                }, 300);
+            }, 600);
+        });
+    </script>
 </body>
 </html>
