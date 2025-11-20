@@ -87,10 +87,13 @@
         }
         
         h1.crumpled {
-            transform: scale(0.85) rotate(8deg);
+            transform: scale(0.85) rotate(8deg) skewX(-5deg) skewY(2deg);
             text-shadow: 3px 3px 8px rgba(230, 57, 70, 0.2),
-                         -2px -2px 4px rgba(230, 57, 70, 0.1);
+                         -2px -2px 4px rgba(230, 57, 70, 0.1),
+                         1px 1px 0px rgba(0, 0, 0, 0.1);
             opacity: 0.85;
+            filter: brightness(0.95) contrast(1.1);
+            letter-spacing: -0.02em;
         }
         
         h1:hover {
@@ -104,7 +107,8 @@
     <div class="inner-page" id="innerPage">
         <a href="#" class="back-button" id="backButton">← back</a>
         <h2>living archive of textiles + fiber</h2>
-        
+        <p>A space for experimental textile practices, fiber arts, and material investigations. We document the ephemeral, the tactile, and the woven—collecting works that exist between craft and concept.</p>
+        <p>This archive includes documentation of textile installations, fiber performances, weaving experiments, and material studies from artists working across disciplines.</p>
         <p>More content coming soon...</p>
     </div>
     
