@@ -1,0 +1,254 @@
+<!--
+/* @license
+ * Copyright 2020 Google Inc. All Rights Reserved.
+ * Licensed under the Apache License, Version 2.0 (the 'License');
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an 'AS IS' BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+-->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>&lt;model-viewer&gt;</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Easily display interactive 3D models on the web and in AR">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="twitter:card" content="player">
+  <meta name="twitter:site" content="modelviewer">
+  <meta name="twitter:player:width" content="480">
+  <meta name="twitter:player:height" content="480">
+  <meta name="twitter:player" content="https://modelviewer.dev/examples/twitter/player.html?src=https://modelviewer.dev/shared-assets/models/NeilArmstrong.glb&amp;poster=https://modelviewer.dev/shared-assets/models/NeilArmstrong.webp&amp;alt=Neil%20Armstrong%27s%20Spacesuit%20from%20the%20Smithsonian%20Digitization%20Programs%20Office%20and%20National%20Air%20and%20Space%20Museum&amp;environmentImage=https://modelviewer.dev/shared-assets/environments/moon_1k.hdr">
+  <meta property="og:title" content="3D model-viewer embed">
+  <meta property="og:description" content="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum">
+  <meta property="og:image" content="https://modelviewer.dev/shared-assets/models/NeilArmstrongTwitter.png">
+
+  <link type="text/css" href="_model-viewer__files/examples.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="https://modelviewer.dev/assets/favicon.png">
+
+  <script defer="defer" src="_model-viewer__files/collector.js"></script>
+  <script>
+    window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+    ga('create', 'UA-169901325-1', { 'storage': 'none' });
+    ga('set', 'referrer', document.referrer.split('?')[0]);
+    ga('set', 'anonymizeIp', true);
+    ga('send', 'pageview');
+  </script>
+  <script async="" src="_model-viewer__files/google-analytics_analytics.js"></script>
+  <style>
+    .demo model-viewer {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="sample">
+    <div id="demo-container" class="demo">
+<!-- Import the component -->
+
+
+<!-- Use it like any other HTML element -->
+<model-viewer alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" src="shared-assets/models/NeilArmstrong.glb" ar="" environment-image="shared-assets/environments/moon_1k.hdr" poster="shared-assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls="" touch-action="pan-y" ar-status="not-presenting"></model-viewer>
+                </div>
+    <div class="content">
+      <div class="wrapper">
+        <div class="heading">
+          <div class="lockup zero-interaction"><div class="icon-button icon-modelviewer-black"></div><h1><span class="attribute">&lt;model-viewer&gt;</span></h1></div>
+          <h3 class="slogan" style="font-weight:400;">Easily display interactive 3D models on the web &amp; in AR</h3>
+        </div>
+
+          <div id="section-quick-start">
+            <h3 class="grouping-title grouping-title-new quick-start">Quick Start</h3>
+            <div class="quick-start-example">
+              <example-snippet inert-script="" stamp-to="demo-container" highlight-as="html">
+                <template>
+<!-- Import the component -->
+<script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+
+<!-- Use it like any other HTML element -->
+<model-viewer alt="Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum" src="shared-assets/models/NeilArmstrong.glb" ar="" environment-image="shared-assets/environments/moon_1k.hdr" poster="shared-assets/models/NeilArmstrong.webp" shadow-intensity="1" camera-controls="" touch-action="pan-y"></model-viewer>
+                </template>
+              <pre><code><span class="token comment">&lt;!-- Import the component --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>module<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">&gt;</span></span>
+
+<span class="token comment">&lt;!-- Use it like any other HTML element --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>model-viewer</span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Neil Armstrong's Spacesuit from the Smithsonian Digitization Programs Office and National Air and Space Museum<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shared-assets/models/NeilArmstrong.glb<span class="token punctuation">"</span></span> <span class="token attr-name">ar</span> <span class="token attr-name">environment-image</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shared-assets/environments/moon_1k.hdr<span class="token punctuation">"</span></span> <span class="token attr-name">poster</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>shared-assets/models/NeilArmstrong.webp<span class="token punctuation">"</span></span> <span class="token attr-name">shadow-intensity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1<span class="token punctuation">"</span></span> <span class="token attr-name">camera-controls</span> <span class="token attr-name">touch-action</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>pan-y<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>model-viewer</span><span class="token punctuation">&gt;</span></span></code></pre></example-snippet>
+            </div>
+          </div>
+
+          <a href="https://bundlephobia.com/result?p=@google/model-viewer">
+            <img src="_model-viewer__files/model-viewer_004.svg" alt="Min Zip">
+          </a>
+          <a href="https://github.com/google/model-viewer/releases">
+            <img src="_model-viewer__files/model-viewer.svg" alt="Latest Release">
+          </a>
+          <a href="https://www.npmjs.com/package/@google/model-viewer">
+            <img src="_model-viewer__files/model-viewer_002.svg" alt="NPM Package">
+          </a>
+          <br>
+          <a href="https://twitter.com/intent/follow?screen_name=modelviewer">
+            <img src="_model-viewer__files/modelviewer.svg" alt="follow on Twitter">
+          </a>
+          <a href="https://github.com/google/model-viewer/discussions">
+            <img src="_model-viewer__files/model-viewer_003.svg" alt="Github Discussions">
+          </a>
+
+        <div id="section-editor">
+          <h3 class="grouping-title grouping-title-new border-bottom">Getting Started</h3>
+          <ol class="new-list-example">
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/docs/faq.html">FAQ</a>: Introduction &amp; much more
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/editor">Editor</a>: Test your 3D models and download a starter website
+              </h4>
+            </li>
+          </ol>
+        </div>
+
+        <div id="section-documentation">
+          <h3 class="grouping-title grouping-title-new border-bottom">Documentation</h3>
+          <ol class="new-list-example">
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/examples/augmentedreality/index.html">Examples</a>: Advanced usage
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/docs/index.html">API Reference</a>
+              </h4>
+            </li>
+          </ol>
+        </div>
+
+        <div id="section-addons">
+          <h3 class="grouping-title grouping-title-new border-bottom">Addons</h3>
+          <ol class="new-list-example">
+            <h4 class="group-title-new border-bottom">
+              <p class="attribute">&lt;model-viewer-effects&gt;</p>
+              <a href="https://bundlephobia.com/result?p=@google/model-viewer-effects">
+                <img src="_model-viewer__files/model-viewer-effects_002.svg" alt="Min Zip">
+              </a>
+              <a href="https://www.npmjs.com/package/@google/model-viewer-effects">
+                <img src="_model-viewer__files/model-viewer-effects.svg" alt="Latest Release">
+              </a>
+            </h4>
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/examples/postprocessing/index.html">Examples</a>
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <a href="https://modelviewer.dev/docs/mve.html">API Reference</a>
+              </h4>
+            </li>
+          </ol>
+        </div>
+
+        <div id="section-browser-support">
+          <h3 class="grouping-title grouping-title-new border-bottom">Browser Support</h3>
+
+          <p class="browser-support-desc"><code>&lt;model-viewer&gt;</code> is supported on the last two major versions of all evergreen
+            desktop and mobile browsers, plus the last two versions of Safari (on MacOS and iOS).</p>
+
+          <p class="browser-support-desc">These browser features are
+          only needed if you wish to use webxr in ar-modes:</p>
+          <table class="browser-support">
+            <tbody><tr>
+              <th>Feature</th>
+              <th><img class="logo-chrome" title="Chrome" alt="Chrome"></th>
+              <th><img class="logo-canary" title="Canary" alt="Canary"></th>
+              <th><img class="logo-safari" title="Safari" alt="Safari"></th>
+              <th><img class="logo-firefox" title="Firefox" alt="Firefox"></th>
+              <th><img class="logo-edge" title="Edge" alt="Edge"></th>
+              <th><img class="logo-samsung" title="Samsung Internet" alt="Samsung Internet"></th>
+            </tr>
+
+            <tr>
+              <td>WebXR Device API</td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+            </tr>
+            <tr>
+              <td>WebXR HitTest API</td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+            </tr>
+            <tr>
+              <td>WebXR DOM Overlay API</td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-na" alt="icon-na"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+              <td><img class="icon-check" alt="icon-check"></td>
+            </tr>
+          </tbody></table>
+
+          <div id="browser-support-icon-group">
+            <div class="icon-desc"><img class="size-24 icon-check" alt="icon-check"><div>Natively supported</div></div>
+            <div class="icon-desc"><img class="size-24 icon-warning" alt="icon-warning"><div>Available with polyfill</div></div>
+            <div class="icon-desc"><img class="size-24 icon-flag" alt="icon-flag"><div>Behind a flag, unstable</div></div>
+            <div class="icon-desc"><img class="size-24 icon-na" alt="icon-na"><div>Not available</div></div>
+          </div>
+
+          <div style="clear:both"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <ul>
+      <li class="attribution">
+        <a href="https://3d.si.edu/object/3d/neil-armstrong-spacesuit:d8c63ba6-4ebc-11ea-b77f-2e728ce88125">Neil Armstrong Space Suit</a> 
+        provided by the Smithsonian Digitization Programs Office and the National Air and Space Museum; <a href="https://www.si.edu/Termsofuse">Usage Conditions Apply</a>.
+      </li>
+    </ul>
+    <div style="margin-top:24px;" class="copyright">©Copyright 2018-2025 Google Inc. Licensed under the Apache License 2.0.</div>
+    <div id="footer-links">
+<div>
+  <a href="https://github.com/google/model-viewer">Github</a> ∙ <a href="https://model-viewer.glitch.me/">Glitch</a> ∙ <a href="https://github.com/google/model-viewer/issues">Bug report</a> ∙ <a href="https://policies.google.com/privacy">Privacy</a>
+</div></div>
+  </div>
+
+  <script type="module" src="_model-viewer__files/docs-and-examples.js">
+  </script>
+  <script type="module">
+    (() => { initFooterLinks();})();
+  </script>
+
+
+  <!-- Documentation-specific dependencies: -->
+  <script type="module" src="_model-viewer__files/dependencies.js">
+  </script>
+
+  <!-- Loads <model-viewer> on modern browsers: -->
+  <script type="module" src="_model-viewer__files/model-viewer.min.js">
+  </script>
+
+
+</body></html>
