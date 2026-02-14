@@ -454,10 +454,15 @@
             <!-- Card 2: Basket -->
             <article class="object-card" onclick="showDetail('basket')">
                 <div class="model-container">
-                    <div class="placeholder-model">
-                        3D Model
-                        <small>basket.glb</small>
-                    </div>
+                    <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        shadow-intensity="0.5"
+                        exposure="1.0"
+                        alt="Sweetgrass basket with lid">
+                    </model-viewer>
                 </div>
                 <div class="object-info">
                     <h3 class="object-title">Sweetgrass Basket with Lid</h3>
@@ -627,10 +632,16 @@
         <div class="detail-grid">
             <div class="detail-model">
                 <div class="detail-model-container">
-                    <div class="placeholder-model">
-                        3D Model
-                        <small>drag to rotate · scroll to zoom</small>
-                    </div>
+                    <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="10deg"
+                        shadow-intensity="0.8"
+                        exposure="1.1"
+                        environment-image="neutral"
+                        alt="Sweetgrass basket with lid, coiled construction">
+                    </model-viewer>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
                 </div>
             </div>
