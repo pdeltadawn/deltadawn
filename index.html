@@ -428,8 +428,8 @@
 
         <div class="object-grid">
             
-            <!-- Card 1: Mola - with model-viewer -->
-            <article class="object-card" onclick="showDetail('mola')">
+            <!-- Card 1: Damask - with model-viewer -->
+            <article class="object-card" onclick="showDetail('damask')">
                 <div class="model-container">
                     <model-viewer 
                         src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
@@ -438,15 +438,15 @@
                         rotation-per-second="15deg"
                         shadow-intensity="0.5"
                         exposure="1.0"
-                        alt="Mola Panel with fishing scene">
+                        alt="Figural damask fragment with bar scene">
                     </model-viewer>
                 </div>
                 <div class="object-info">
-                    <h3 class="object-title">Mola Panel, Fishing Scene</h3>
-                    <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
+                    <h3 class="object-title">Figural Damask Fragment</h3>
+                    <p class="object-meta">American · Mid-20th century</p>
                     <div class="object-tags">
-                        <span class="tag">reverse appliqué</span>
-                        <span class="tag">cotton</span>
+                        <span class="tag">damask</span>
+                        <span class="tag">rayon</span>
                     </div>
                 </div>
             </article>
@@ -455,15 +455,7 @@
             <article class="object-card" onclick="showDetail('basket')">
                 <div class="model-container">
                     <div class="placeholder-model">
-                  <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Mola Panel with fishing scene">
-                    </model-viewer>
+                        3D Model
                         <small>basket.glb</small>
                     </div>
                 </div>
@@ -477,21 +469,25 @@
                 </div>
             </article>
 
-            <!-- Card 3: Ikat -->
-            <article class="object-card">
+            <!-- Card 3: Mola -->
+            <article class="object-card" onclick="showDetail('mola')">
                 <div class="model-container">
-                    <div class="placeholder-model">
-                        3D Model
-                        <small>ikat.glb</small>
-                    </div>
+                    <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        shadow-intensity="0.5"
+                        exposure="1.0"
+                        alt="Mola panel with fishing scene">
+                    </model-viewer>
                 </div>
                 <div class="object-info">
-                    <h3 class="object-title">Hand-cut Silk Velvet Ikat</h3>
-                    <p class="object-meta">Rasuljon Mirzaakhmedon · Uzbekistan</p>
+                    <h3 class="object-title">Mola Panel, Fishing Scene</h3>
+                    <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
                     <div class="object-tags">
-                        <span class="tag">silk</span>
-                        <span class="tag">ikat</span>
-                        <span class="tag">cut-pile</span>
+                        <span class="tag">reverse appliqué</span>
+                        <span class="tag">cotton</span>
                     </div>
                 </div>
             </article>
@@ -517,7 +513,7 @@
     </section>
 
     <!-- Detail View: Damask -->
-    <section class="detail-section" id="detail-mola">
+    <section class="detail-section" id="detail-damask">
         <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
         
         <div class="detail-grid">
@@ -531,21 +527,75 @@
                         shadow-intensity="0.8"
                         exposure="1.1"
                         environment-image="neutral"
-                        alt="Rayon Damask fragment">
+                        alt="Figural damask fragment with bar and billiard scene">
                     </model-viewer>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
                 </div>
             </div>
 
             <div class="detail-info">
-                <h1>Rayon Damask Fragment</h1>
-                <p class="detail-meta">Unknown maker, Likely American</p>
+                <h1>Figural Damask Fragment</h1>
+                <p class="detail-meta">American · Mid-20th century (likely 1940s–1950s)</p>
 
                 <p class="detail-description">
-                   This damask fragment features depictions of people imbibing in leisurely conviviality at a bar: playing pool, imbibing, and being merry. 
+                    A small fragment of figural damask depicting a lively bar and billiard hall scene. Figures gather around pool tables, hold drinks, and socialize—a snapshot of mid-century American leisure culture woven into cloth.
                 </p>
                 <p class="detail-description">
-                    Damask is a style of woven textile that uses a positive and negative weave strucutre to create imagery. The back of the textile will always be the inverse of the front. 
+                    This type of "conversational" or novelty damask was likely produced for upholstery in home recreation rooms, basement bars, or commercial lounges during the postwar era. The monochromatic palette emphasizes the tonal interplay between matte and sheen surfaces characteristic of damask weaving.
+                </p>
+
+                <div class="detail-specs">
+                    <div class="spec-item">
+                        <div class="spec-label">Dimensions</div>
+                        <div class="spec-value">Fragment</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Technique</div>
+                        <div class="spec-value">Jacquard damask</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Materials</div>
+                        <div class="spec-value">Rayon</div>
+                    </div>
+                    <div class="spec-item">
+                        <div class="spec-label">Provenance</div>
+                        <div class="spec-value">Unknown</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Detail View: Mola -->
+    <section class="detail-section" id="detail-mola">
+        <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+        
+        <div class="detail-grid">
+            <div class="detail-model">
+                <div class="detail-model-container">
+                    <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="10deg"
+                        shadow-intensity="0.8"
+                        exposure="1.1"
+                        environment-image="neutral"
+                        alt="Mola panel with fishing scene, reverse appliqué textile from Panama">
+                    </model-viewer>
+                    <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+                </div>
+            </div>
+
+            <div class="detail-info">
+                <h1>Mola Panel, Fishing Scene</h1>
+                <p class="detail-meta">Guna (Kuna) · San Blas Islands, Panama · 1969</p>
+
+                <p class="detail-description">
+                    This mola panel depicts a traditional fishing scene with a sailing boat, fishing lines extending to fish below, a turtle, and what appears to be an iguana in the upper left. The imagery reflects daily life and the importance of fishing to Guna island communities.
+                </p>
+                <p class="detail-description">
+                    Molas are created through reverse appliqué—multiple layers of fabric are stacked and cut away to reveal colors beneath, all secured with tiny, nearly invisible stitches. The technical work here is particularly fine, with tight stitching and balanced color composition on a traditional red base.
                 </p>
 
                 <div class="detail-specs">
@@ -578,15 +628,7 @@
             <div class="detail-model">
                 <div class="detail-model-container">
                     <div class="placeholder-model">
-                          <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Mola Panel with fishing scene">
-                    </model-viewer>
+                        3D Model
                         <small>drag to rotate · scroll to zoom</small>
                     </div>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
