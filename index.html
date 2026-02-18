@@ -164,7 +164,7 @@
         .model-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 280px;
             background: linear-gradient(145deg, #f5f3f0, #e8e6e3);
             overflow: hidden;
         }
@@ -227,22 +227,21 @@
 
         .detail-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 4rem;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .detail-model {
-            position: relative;
+            position: sticky;
+            top: 6rem;
         }
 
         .detail-model-container {
             position: relative;
             width: 100%;
-            height: 70vh;
-            min-height: 500px;
-            max-height: 800px;
+            height: 500px;
             background: var(--card-bg);
             border-radius: 12px;
             overflow: hidden;
@@ -429,8 +428,8 @@
 
         <div class="object-grid">
             
-            <!-- Card 1: Damask - with model-viewer -->
-            <article class="object-card" onclick="showDetail('damask')">
+            <!-- Card 1: Mola - with model-viewer -->
+            <article class="object-card" onclick="showDetail('mola')">
                 <div class="model-container">
                     <model-viewer 
                         src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
@@ -439,15 +438,15 @@
                         rotation-per-second="15deg"
                         shadow-intensity="0.5"
                         exposure="1.0"
-                        alt="Figural damask fragment with bar scene">
+                        alt="Mola Panel with fishing scene">
                     </model-viewer>
                 </div>
                 <div class="object-info">
-                    <h3 class="object-title">Figural Damask Fragment</h3>
-                    <p class="object-meta">American · Mid-20th century</p>
+                    <h3 class="object-title">Mola Panel, Fishing Scene</h3>
+                    <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
                     <div class="object-tags">
-                        <span class="tag">damask</span>
-                        <span class="tag">rayon</span>
+                        <span class="tag">reverse appliqué</span>
+                        <span class="tag">cotton</span>
                     </div>
                 </div>
             </article>
@@ -455,15 +454,10 @@
             <!-- Card 2: Basket -->
             <article class="object-card" onclick="showDetail('basket')">
                 <div class="model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Sweetgrass basket with lid">
-                    </model-viewer>
+                    <div class="placeholder-model">
+                        3D Model
+                        <small>basket.glb</small>
+                    </div>
                 </div>
                 <div class="object-info">
                     <h3 class="object-title">Sweetgrass Basket with Lid</h3>
@@ -475,25 +469,21 @@
                 </div>
             </article>
 
-            <!-- Card 3: Mola -->
-            <article class="object-card" onclick="showDetail('mola')">
+            <!-- Card 3: Ikat -->
+            <article class="object-card">
                 <div class="model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola1.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Mola panel with fishing scene">
-                    </model-viewer>
+                    <div class="placeholder-model">
+                        3D Model
+                        <small>ikat.glb</small>
+                    </div>
                 </div>
                 <div class="object-info">
-                    <h3 class="object-title">Mola Panel, Fishing Scene</h3>
-                    <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
+                    <h3 class="object-title">Hand-cut Silk Velvet Ikat</h3>
+                    <p class="object-meta">Rasuljon Mirzaakhmedon · Uzbekistan</p>
                     <div class="object-tags">
-                        <span class="tag">reverse appliqué</span>
-                        <span class="tag">cotton</span>
+                        <span class="tag">silk</span>
+                        <span class="tag">ikat</span>
+                        <span class="tag">cut-pile</span>
                     </div>
                 </div>
             </article>
@@ -518,8 +508,8 @@
         </div>
     </section>
 
-    <!-- Detail View: Damask -->
-    <section class="detail-section" id="detail-damask">
+    <!-- Detail View: Mola -->
+    <section class="detail-section" id="detail-mola">
         <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
         
         <div class="detail-grid">
@@ -533,61 +523,7 @@
                         shadow-intensity="0.8"
                         exposure="1.1"
                         environment-image="neutral"
-                        alt="Figural damask fragment with bar and billiard scene">
-                    </model-viewer>
-                    <div class="interaction-hint">drag to rotate · scroll to zoom</div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h1>Figural Damask Fragment</h1>
-                <p class="detail-meta">American · Mid-20th century (likely 1940s–1950s)</p>
-
-                <p class="detail-description">
-                    A small fragment of figural damask depicting a lively bar and billiard hall scene. Figures gather around pool tables, hold drinks, and socialize—a snapshot of mid-century American leisure culture woven into cloth.
-                </p>
-                <p class="detail-description">
-                    This type of "conversational" or novelty damask was likely produced for upholstery in home recreation rooms, basement bars, or commercial lounges during the postwar era. The monochromatic palette emphasizes the tonal interplay between matte and sheen surfaces characteristic of damask weaving.
-                </p>
-
-                <div class="detail-specs">
-                    <div class="spec-item">
-                        <div class="spec-label">Dimensions</div>
-                        <div class="spec-value">Fragment</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Technique</div>
-                        <div class="spec-value">Jacquard damask</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Materials</div>
-                        <div class="spec-value">Rayon</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Provenance</div>
-                        <div class="spec-value">Unknown</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Detail View: Mola -->
-    <section class="detail-section" id="detail-mola">
-        <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
-        
-        <div class="detail-grid">
-            <div class="detail-model">
-                <div class="detail-model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="10deg"
-                        shadow-intensity="0.8"
-                        exposure="1.1"
-                        environment-image="neutral"
-                        alt="Mola panel with fishing scene, reverse appliqué textile from Panama">
+                        alt="Mola Panel with fishing scene, reverse appliqué textile from Panama">
                     </model-viewer>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
                 </div>
@@ -633,16 +569,10 @@
         <div class="detail-grid">
             <div class="detail-model">
                 <div class="detail-model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="10deg"
-                        shadow-intensity="0.8"
-                        exposure="1.1"
-                        environment-image="neutral"
-                        alt="Sweetgrass basket with lid, coiled construction">
-                    </model-viewer>
+                    <div class="placeholder-model">
+                        3D Model
+                        <small>drag to rotate · scroll to zoom</small>
+                    </div>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
                 </div>
             </div>
