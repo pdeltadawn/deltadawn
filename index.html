@@ -432,7 +432,7 @@
             <article class="object-card" onclick="showDetail('mola')">
                 <div class="model-container">
                     <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola1.glb"
                         camera-controls
                         auto-rotate
                         rotation-per-second="15deg"
@@ -456,7 +456,15 @@
                 <div class="model-container">
                     <div class="placeholder-model">
                         3D Model
-                        <small>basket.glb</small>
+                        <small> <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="15deg"
+                        shadow-intensity="0.5"
+                        exposure="1.0"
+                        alt="basket">
+                    </model-viewer></small>
                     </div>
                 </div>
                 <div class="object-info">
@@ -516,7 +524,7 @@
             <div class="detail-model">
                 <div class="detail-model-container">
                     <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
                         camera-controls
                         auto-rotate
                         rotation-per-second="10deg"
@@ -570,7 +578,16 @@
             <div class="detail-model">
                 <div class="detail-model-container">
                     <div class="placeholder-model">
-                        3D Model
+                        <model-viewer 
+                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+                        camera-controls
+                        auto-rotate
+                        rotation-per-second="10deg"
+                        shadow-intensity="0.8"
+                        exposure="1.1"
+                        environment-image="neutral"
+                        alt="Mola Panel with fishing scene, reverse appliqué textile from Panama">
+                    </model-viewer>
                         <small>drag to rotate · scroll to zoom</small>
                     </div>
                     <div class="interaction-hint">drag to rotate · scroll to zoom</div>
