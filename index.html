@@ -1,719 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Living Archive of Textiles + Fiber</title>
-    
-    <!-- Model Viewer - Google's free 3D viewer component -->
-    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Living Archive of Textiles + Fiber</title>
 
-        :root {
-            --bg: #f8f6f3;
-            --text: #2a2a2a;
-            --accent: #c45c3e;
-            --muted: #7a7a7a;
-            --card-bg: #ffffff;
-        }
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.6;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, var(--bg) 60%, transparent);
-        }
+    :root {
+      --bg: #f8f6f3;
+      --text: #2a2a2a;
+      --accent: #c45c3e;
+      --muted: #7a7a7a;
+      --muted-light: #b0aca7;
+      --card-bg: #ffffff;
+      --border: #e8e5e1;
+    }
 
-        .logo {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.1rem;
-            font-style: italic;
-            color: var(--accent);
-            letter-spacing: 0.02em;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
 
-        .nav-links a {
-            text-decoration: none;
-            color: var(--muted);
-            font-size: 0.85rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: color 0.3s ease;
-        }
+    /* ── Navigation ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+      background: linear-gradient(to bottom, var(--bg) 70%, transparent);
+    }
 
-        .nav-links a:hover {
-            color: var(--text);
-        }
+    .logo {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--accent);
+      letter-spacing: 0.02em;
+      text-decoration: none;
+    }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 3rem;
-            max-width: 900px;
-        }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
 
-        .hero h1 {
-            font-family: 'Crimson Text', serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            font-weight: 400;
-            line-height: 1.1;
-            margin-bottom: 2rem;
-            font-style: italic;
-        }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.25s ease;
+    }
 
-        .hero h1 span {
-            color: var(--accent);
-        }
+    .nav-links a:hover {
+      color: var(--text);
+    }
 
-        .hero-intro {
-            font-size: 1.1rem;
-            color: var(--muted);
-            max-width: 500px;
-            margin-bottom: 3rem;
-        }
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 3rem;
+      max-width: 960px;
+    }
 
-        .scroll-hint {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
+    .hero h1 {
+      font-family: 'Crimson Text', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 400;
+      line-height: 1.08;
+      margin-bottom: 2rem;
+      font-style: italic;
+    }
 
-        .scroll-hint::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--muted);
-        }
+    .hero h1 span {
+      color: var(--accent);
+    }
 
-        /* Collection Grid */
-        .collection {
-            padding: 6rem 3rem;
-        }
+    .hero-intro {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      margin-bottom: 3.5rem;
+      line-height: 1.75;
+      font-weight: 300;
+    }
 
-        .section-header {
-            margin-bottom: 4rem;
-        }
+    .scroll-hint {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted-light);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
 
-        .section-header h2 {
-            font-family: 'Crimson Text', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
+    .scroll-hint::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--muted-light);
+    }
 
-        .section-header p {
-            color: var(--muted);
-            max-width: 500px;
-        }
+    /* ── Collection ── */
+    .collection {
+      padding: 6rem 3rem;
+    }
 
-        .object-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+    .section-header {
+      margin-bottom: 4rem;
+    }
 
-        .object-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
 
-        .object-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
+    .section-header h2 {
+      font-family: 'Crimson Text', serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
 
-        /* Model Viewer Container */
-        .model-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            background: linear-gradient(145deg, #f5f3f0, #e8e6e3);
-            overflow: hidden;
-        }
+    .section-header p {
+      color: var(--muted);
+      max-width: 520px;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
 
-        /* Style the model-viewer element */
-        model-viewer {
-            width: 100%;
-            height: 100%;
-            --poster-color: transparent;
-        }
+    .object-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.75rem;
+    }
 
-        /* Custom loading indicator */
-        model-viewer::part(default-progress-bar) {
-            background-color: var(--accent);
-            height: 3px;
-        }
+    /* ── Cards ── */
+    .object-card {
+      background: var(--card-bg);
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
+      border: 1px solid var(--border);
+    }
 
-        .object-info {
-            padding: 1.5rem;
-        }
+    .object-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.07);
+    }
 
-        .object-title {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.25rem;
-            font-weight: 400;
-            margin-bottom: 0.5rem;
-        }
+    .object-card.coming-soon {
+      cursor: default;
+      opacity: 0.6;
+    }
 
-        .object-meta {
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
+    .object-card.coming-soon:hover {
+      transform: none;
+      box-shadow: none;
+    }
 
-        .object-tags {
-            display: flex;
-            gap: 0.5rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
+    .model-container {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: linear-gradient(150deg, #f2f0ed, #e6e4e0);
+      overflow: hidden;
+    }
 
-        .tag {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            padding: 0.3rem 0.6rem;
-            background: var(--bg);
-            border-radius: 3px;
-            color: var(--muted);
-        }
+    model-viewer {
+      width: 100%;
+      height: 100%;
+      --poster-color: transparent;
+    }
 
-        /* Detail View */
-        .detail-section {
-            padding: 8rem 3rem 6rem;
-            display: none;
-        }
+    model-viewer::part(default-progress-bar) {
+      background-color: var(--accent);
+      height: 2px;
+    }
 
-        .detail-section.active {
-            display: block;
-        }
+    .object-info {
+      padding: 1.4rem 1.5rem 1.5rem;
+      border-top: 1px solid var(--border);
+    }
 
-        .detail-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
+    .object-title {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      margin-bottom: 0.35rem;
+    }
 
-        .detail-model {
-            position: relative;
-        }
+    .object-meta {
+      font-size: 0.8rem;
+      color: var(--muted);
+      letter-spacing: 0.02em;
+    }
 
-        .detail-model-container {
-            position: relative;
-            width: 100%;
-            height: 70vh;
-            min-height: 500px;
-            max-height: 800px;
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
-        }
+    .object-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
 
-        .detail-model-container model-viewer {
-            width: 100%;
-            height: 100%;
-        }
+    .tag {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.55rem;
+      background: var(--bg);
+      border-radius: 2px;
+      color: var(--muted);
+    }
 
-        /* Interaction hint */
-        .interaction-hint {
-            position: absolute;
-            bottom: 1rem;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            background: rgba(255,255,255,0.9);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            pointer-events: none;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
+    .coming-soon-badge {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-light);
+      margin-top: 0.75rem;
+    }
 
-        .detail-model-container:hover .interaction-hint {
-            opacity: 0;
-        }
+    /* Placeholder model tile */
+    .placeholder-model {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      color: var(--muted-light);
+      font-size: 0.95rem;
+    }
 
-        .detail-info h1 {
-            font-family: 'Crimson Text', serif;
-            font-size: 2.5rem;
-            font-weight: 400;
-            font-style: italic;
-            margin-bottom: 0.5rem;
-        }
+    .placeholder-model small {
+      font-family: 'DM Sans', sans-serif;
+      font-style: normal;
+      font-size: 0.65rem;
+      opacity: 0.5;
+      letter-spacing: 0.05em;
+    }
 
-        .detail-meta {
-            font-size: 1rem;
-            color: var(--muted);
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #e5e5e5;
-        }
+    /* ── Detail View ── */
+    .detail-section {
+      padding: 7rem 3rem 6rem;
+      display: none;
+      min-height: 100vh;
+    }
 
-        .detail-description {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 1.5rem;
-        }
+    .detail-section.active {
+      display: block;
+    }
 
-        .detail-specs {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      transition: color 0.25s ease;
+    }
 
-        .spec-item {
-            padding: 1rem 0;
-            border-top: 1px solid #e5e5e5;
-        }
+    .back-link:hover {
+      color: var(--accent);
+    }
 
-        .spec-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--muted);
-            margin-bottom: 0.3rem;
-        }
+    .detail-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      align-items: start;
+    }
 
-        .spec-value {
-            font-family: 'Crimson Text', serif;
-            font-size: 1.1rem;
-        }
+    /* Sticky model column */
+    .detail-model {
+      position: sticky;
+      top: 6rem;
+    }
 
-        .back-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-            margin-bottom: 2rem;
-            transition: color 0.3s ease;
-        }
+    .detail-model-container {
+      position: relative;
+      width: 100%;
+      height: 72vh;
+      min-height: 480px;
+      max-height: 820px;
+      background: var(--card-bg);
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
 
-        .back-link:hover {
-            color: var(--text);
-        }
+    .detail-model-container model-viewer {
+      width: 100%;
+      height: 100%;
+    }
 
-        /* Footer */
-        footer {
-            padding: 4rem 3rem;
-            border-top: 1px solid #e5e5e5;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .interaction-hint {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      background: rgba(248, 246, 243, 0.92);
+      padding: 0.45rem 0.9rem;
+      border-radius: 20px;
+      pointer-events: none;
+      transition: opacity 0.4s ease;
+      white-space: nowrap;
+    }
 
-        footer p {
-            font-size: 0.85rem;
-            color: var(--muted);
-        }
+    .detail-model-container:hover .interaction-hint {
+      opacity: 0;
+    }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .detail-grid {
-                grid-template-columns: 1fr;
-            }
+    /* Detail info column */
+    .detail-info {
+      padding-top: 0.5rem;
+    }
 
-            .detail-model {
-                position: relative;
-                top: 0;
-            }
-        }
+    .detail-object-label {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
 
-        @media (max-width: 600px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
+    .detail-info h1 {
+      font-family: 'Crimson Text', serif;
+      font-size: 2.6rem;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      margin-bottom: 0.6rem;
+    }
 
-            .hero, .collection {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
+    .detail-meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
 
-            .object-grid {
-                grid-template-columns: 1fr;
-            }
-        }
+    .detail-description {
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
 
-        /* Demo placeholder styling */
-        .placeholder-model {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Crimson Text', serif;
-            font-style: italic;
-            color: var(--muted);
-            font-size: 1rem;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+    .detail-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      margin-top: 2.5rem;
+      border-top: 1px solid var(--border);
+    }
 
-        .placeholder-model small {
-            font-family: 'DM Sans', sans-serif;
-            font-style: normal;
-            font-size: 0.7rem;
-            opacity: 0.6;
-        }
-    </style>
+    .spec-item {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .spec-item:nth-child(odd) {
+      padding-right: 1.5rem;
+    }
+
+    .spec-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .spec-value {
+      font-family: 'Crimson Text', serif;
+      font-size: 1.05rem;
+    }
+
+    /* ── Footer ── */
+    footer {
+      padding: 3.5rem 3rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    footer p {
+      font-size: 0.8rem;
+      color: var(--muted-light);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 1000px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .detail-model {
+        position: relative;
+        top: 0;
+      }
+
+      .detail-model-container {
+        height: 55vh;
+      }
+    }
+
+    @media (max-width: 700px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1.5rem;
+      }
+
+      .hero,
+      .collection,
+      .detail-section {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.4rem, 10vw, 3.5rem);
+      }
+
+      .object-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-specs {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-info h1 {
+        font-size: 2rem;
+      }
+
+      footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">Living Archive of Textiles + Fiber</div>
-        <ul class="nav-links">
-            <li><a href="#collection">Collection</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#methodology">Process</a></li>
-        </ul>
-    </nav>
+  <!-- Navigation -->
+  <nav>
+    <a href="#" class="logo" onclick="showHome(); return false;">Living Archive of Textiles + Fiber</a>
+    <ul class="nav-links">
+      <li><a href="#" onclick="showHome(); return false;">Collection</a></li>
+    </ul>
+  </nav>
 
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <h1>Material <span>Histories,</span><br>Woven Worlds</h1>
-        <p class="hero-intro">Rotate, zoom, and examine structures that hands once made and time has carried forward. A virtual exhibition of 3D-scanned textiles from the KU collection.</p>
-        <div class="scroll-hint">Scroll to explore</div>
-    </section>
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <h1>Material <span>Histories,</span><br>Woven Worlds</h1>
+    <p class="hero-intro">Rotate, zoom, and examine structures that hands once made and time has carried forward. A virtual exhibition of 3D-scanned textiles from the KU collection.</p>
+    <div class="scroll-hint">Scroll to explore</div>
+  </section>
 
-    <!-- Collection Grid -->
-    <section class="collection" id="collection">
-        <div class="section-header">
-            <h2>The Collection</h2>
-            <p>Each object links to others through material, technique, and origin—a web of making that crosses centuries and continents.</p>
+  <!-- Collection -->
+  <section class="collection" id="collection">
+    <div class="section-header">
+      <p class="section-label">The Collection</p>
+      <h2>Objects in the Archive</h2>
+      <p>Each object links to others through material, technique, and origin — a web of making that crosses centuries and continents.</p>
+    </div>
+
+    <div class="object-grid">
+
+      <!-- Card 1: Damask -->
+      <article class="object-card" onclick="showDetail('damask')">
+        <div class="model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="12deg"
+            shadow-intensity="0.5"
+            exposure="1.0"
+            alt="Figural damask fragment with bar scene">
+          </model-viewer>
         </div>
-
-        <div class="object-grid">
-            
-            <!-- Card 1: Damask -->
-            <article class="object-card" onclick="showDetail('damask')">
-                <div class="model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Figural damask fragment with bar scene">
-                    </model-viewer>
-                </div>
-                <div class="object-info">
-                    <h3 class="object-title">Figural Damask Fragment</h3>
-                    <p class="object-meta">American · Mid-20th century</p>
-                    <div class="object-tags">
-                        <span class="tag">damask</span>
-                        <span class="tag">rayon</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 2: Basket -->
-            <article class="object-card" onclick="showDetail('basket')">
-                <div class="model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Sweetgrass basket with lid">
-                    </model-viewer>
-                </div>
-                <div class="object-info">
-                    <h3 class="object-title">Sweetgrass Basket with Lid</h3>
-                    <p class="object-meta">Unknown maker · Found object</p>
-                    <div class="object-tags">
-                        <span class="tag">coiled</span>
-                        <span class="tag">grass</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 3: Mola -->
-            <article class="object-card" onclick="showDetail('mola')">
-                <div class="model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="15deg"
-                        shadow-intensity="0.5"
-                        exposure="1.0"
-                        alt="Mola panel with fishing scene">
-                    </model-viewer>
-                </div>
-                <div class="object-info">
-                    <h3 class="object-title">Mola Panel, Fishing Scene</h3>
-                    <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
-                    <div class="object-tags">
-                        <span class="tag">reverse appliqué</span>
-                        <span class="tag">cotton</span>
-                    </div>
-                </div>
-            </article>
-
-            <!-- Card 4: Palm Basket (placeholder) -->
-            <article class="object-card">
-                <div class="model-container">
-                    <div class="placeholder-model">
-                        3D Model
-                        <small>palm-basket.glb</small>
-                    </div>
-                </div>
-                <div class="object-info">
-                    <h3 class="object-title">Palm Basket</h3>
-                    <p class="object-meta">Oaxaca · Mexico</p>
-                    <div class="object-tags">
-                        <span class="tag">plaited</span>
-                        <span class="tag">palm</span>
-                    </div>
-                </div>
-            </article>
+        <div class="object-info">
+          <h3 class="object-title">Figural Damask Fragment</h3>
+          <p class="object-meta">American · Mid-20th century</p>
+          <div class="object-tags">
+            <span class="tag">damask</span>
+            <span class="tag">rayon</span>
+            <span class="tag">jacquard</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Detail View: Damask -->
-    <section class="detail-section" id="detail-damask">
-        <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
-        
-        <div class="detail-grid">
-            <div class="detail-model">
-                <div class="detail-model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="10deg"
-                        shadow-intensity="0.8"
-                        exposure="1.1"
-                        environment-image="neutral"
-                        alt="Figural damask fragment with bar and billiard scene">
-                    </model-viewer>
-                    <div class="interaction-hint">drag to rotate · scroll to zoom</div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h1>Figural Damask Fragment</h1>
-                <p class="detail-meta">American · Mid-20th century (likely 1940s–1950s)</p>
-
-                <p class="detail-description">
-                    A small fragment of figural damask depicting a lively bar and billiard hall scene. Figures gather around pool tables, hold drinks, and socialize—a snapshot of mid-century American leisure culture woven into cloth.
-                </p>
-                <p class="detail-description">
-                    This type of "conversational" or novelty damask was likely produced for upholstery in home recreation rooms, basement bars, or commercial lounges during the postwar era. The monochromatic palette emphasizes the tonal interplay between matte and sheen surfaces characteristic of damask weaving.
-                </p>
-
-                <div class="detail-specs">
-                    <div class="spec-item">
-                        <div class="spec-label">Dimensions</div>
-                        <div class="spec-value">Fragment</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Technique</div>
-                        <div class="spec-value">Jacquard damask</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Materials</div>
-                        <div class="spec-value">Rayon</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Provenance</div>
-                        <div class="spec-value">Unknown</div>
-                    </div>
-                </div>
-            </div>
+      <!-- Card 2: Basket -->
+      <article class="object-card" onclick="showDetail('basket')">
+        <div class="model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="12deg"
+            shadow-intensity="0.5"
+            exposure="1.0"
+            alt="Sweetgrass basket with lid">
+          </model-viewer>
         </div>
-    </section>
-
-    <!-- Detail View: Basket -->
-    <section class="detail-section" id="detail-basket">
-        <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
-        
-        <div class="detail-grid">
-            <div class="detail-model">
-                <div class="detail-model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="10deg"
-                        shadow-intensity="0.8"
-                        exposure="1.1"
-                        environment-image="neutral"
-                        alt="Sweetgrass basket with lid, coiled construction">
-                    </model-viewer>
-                    <div class="interaction-hint">drag to rotate · scroll to zoom</div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h1>Sweetgrass Basket with Lid</h1>
-                <p class="detail-meta">Unknown maker · Found object</p>
-
-                <p class="detail-description">
-                    A coiled sweetgrass basket with fitted lid, discovered at a thrift store. The coiling technique creates concentric rings visible on the lid and body, with subtle color variation in the natural grass material. The form suggests it was made for storage or as a decorative object.
-                </p>
-                <p class="detail-description">
-                    Sweetgrass basketry has deep roots in African American craft traditions, particularly in the Lowcountry region of South Carolina. Without provenance, we cannot attribute this basket to a specific tradition, but its construction demonstrates skilled handwork.
-                </p>
-
-                <div class="detail-specs">
-                    <div class="spec-item">
-                        <div class="spec-label">Dimensions</div>
-                        <div class="spec-value">~6 × 8 inches</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Technique</div>
-                        <div class="spec-value">Coiled</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Materials</div>
-                        <div class="spec-value">Sweetgrass</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Provenance</div>
-                        <div class="spec-value">Unknown</div>
-                    </div>
-                </div>
-            </div>
+        <div class="object-info">
+          <h3 class="object-title">Sweetgrass Basket with Lid</h3>
+          <p class="object-meta">Unknown maker · Found object</p>
+          <div class="object-tags">
+            <span class="tag">coiled</span>
+            <span class="tag">sweetgrass</span>
+          </div>
         </div>
-    </section>
+      </article>
 
-    <!-- Detail View: Mola -->
-    <section class="detail-section" id="detail-mola">
-        <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
-        
-        <div class="detail-grid">
-            <div class="detail-model">
-                <div class="detail-model-container">
-                    <model-viewer 
-                        src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
-                        camera-controls
-                        auto-rotate
-                        rotation-per-second="10deg"
-                        shadow-intensity="0.8"
-                        exposure="1.1"
-                        environment-image="neutral"
-                        alt="Mola panel with fishing scene, reverse appliqué textile from Panama">
-                    </model-viewer>
-                    <div class="interaction-hint">drag to rotate · scroll to zoom</div>
-                </div>
-            </div>
-
-            <div class="detail-info">
-                <h1>Mola Panel, Fishing Scene</h1>
-                <p class="detail-meta">Guna (Kuna) · San Blas Islands, Panama · 1969</p>
-
-                <p class="detail-description">
-                    This mola panel depicts a traditional fishing scene with a sailing boat, fishing lines extending to fish below, a turtle, and what appears to be an iguana in the upper left. The imagery reflects daily life and the importance of fishing to Guna island communities.
-                </p>
-                <p class="detail-description">
-                    Molas are created through reverse appliqué—multiple layers of fabric are stacked and cut away to reveal colors beneath, all secured with tiny, nearly invisible stitches. The technical work here is particularly fine, with tight stitching and balanced color composition on a traditional red base.
-                </p>
-
-                <div class="detail-specs">
-                    <div class="spec-item">
-                        <div class="spec-label">Dimensions</div>
-                        <div class="spec-value">12 × 18 inches</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Technique</div>
-                        <div class="spec-value">Reverse appliqué</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Materials</div>
-                        <div class="spec-value">Cotton, thread</div>
-                    </div>
-                    <div class="spec-item">
-                        <div class="spec-label">Origin</div>
-                        <div class="spec-value">San Blas Islands</div>
-                    </div>
-                </div>
-            </div>
+      <!-- Card 3: Mola -->
+      <article class="object-card" onclick="showDetail('mola')">
+        <div class="model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="12deg"
+            shadow-intensity="0.5"
+            exposure="1.0"
+            alt="Mola panel with fishing scene">
+          </model-viewer>
         </div>
-    </section>
+        <div class="object-info">
+          <h3 class="object-title">Mola Panel, Fishing Scene</h3>
+          <p class="object-meta">Guna (Kuna) · Panama · 1969</p>
+          <div class="object-tags">
+            <span class="tag">reverse appliqué</span>
+            <span class="tag">cotton</span>
+          </div>
+        </div>
+      </article>
 
-    <footer id="footer">
-        <p>Living Archive of Textiles + Fiber · University of Kansas</p>
-        <p>3D scanning via photogrammetry</p>
-    </footer>
+      <!-- Card 4: Palm Basket (coming soon) -->
+      <article class="object-card coming-soon">
+        <div class="model-container">
+          <div class="placeholder-model">
+            3D scan in progress
+            <small>palm-basket.glb</small>
+          </div>
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Palm Basket</h3>
+          <p class="object-meta">Oaxaca · Mexico</p>
+          <div class="object-tags">
+            <span class="tag">plaited</span>
+            <span class="tag">palm</span>
+          </div>
+          <p class="coming-soon-badge">Model coming soon</p>
+        </div>
+      </article>
 
-    <script>
-        function showDetail(id) {
-            // Hide all sections
-            document.getElementById('home').style.display = 'none';
-            document.getElementById('collection').style.display = 'none';
-            document.getElementById('footer').style.display = 'none';
-            
-            // Hide all detail sections
-            document.querySelectorAll('.detail-section').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Show the requested detail
-            document.getElementById('detail-' + id).classList.add('active');
-            window.scrollTo(0, 0);
-        }
+    </div>
+  </section>
 
-        function hideDetail() {
-            // Hide all detail sections
-            document.querySelectorAll('.detail-section').forEach(el => {
-                el.classList.remove('active');
-            });
-            
-            // Show main sections
-            document.getElementById('home').style.display = 'flex';
-            document.getElementById('collection').style.display = 'block';
-            document.getElementById('footer').style.display = 'flex';
-        }
-    </script>
+  <!-- ── Detail: Damask ── -->
+  <section class="detail-section" id="detail-damask">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Figural damask fragment with bar and billiard scene">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label">Textile · American</p>
+        <h1>Figural Damask Fragment</h1>
+        <p class="detail-meta">American · Mid-20th century (likely 1940s–1950s)</p>
+
+        <p class="detail-description">
+          A small fragment of figural damask depicting a lively bar and billiard hall scene. Figures gather around pool tables, hold drinks, and socialize — a snapshot of mid-century American leisure culture woven into cloth.
+        </p>
+        <p class="detail-description">
+          This type of "conversational" or novelty damask was likely produced for upholstery in home recreation rooms, basement bars, or commercial lounges during the postwar era. The monochromatic palette emphasizes the tonal interplay between matte and sheen surfaces characteristic of damask weaving.
+        </p>
+
+        <div class="detail-specs">
+          <div class="spec-item">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">Fragment</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Jacquard damask</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Rayon</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Provenance</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Basket ── -->
+  <section class="detail-section" id="detail-basket">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Sweetgrass basket with lid, coiled construction">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label">Textile · Found Object</p>
+        <h1>Sweetgrass Basket with Lid</h1>
+        <p class="detail-meta">Unknown maker · Found object</p>
+
+        <p class="detail-description">
+          A coiled sweetgrass basket with fitted lid, discovered at a thrift store. The coiling technique creates concentric rings visible on the lid and body, with subtle color variation in the natural grass material. The form suggests it was made for storage or as a decorative object.
+        </p>
+        <p class="detail-description">
+          Sweetgrass basketry has deep roots in African American craft traditions, particularly in the Lowcountry region of South Carolina. Without provenance, we cannot attribute this basket to a specific tradition, but its construction demonstrates skilled handwork.
+        </p>
+
+        <div class="detail-specs">
+          <div class="spec-item">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">~6 × 8 inches</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Coiled</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Sweetgrass</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Provenance</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Mola ── -->
+  <section class="detail-section" id="detail-mola">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mola.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Mola panel with fishing scene, reverse appliqué textile from Panama">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label">Textile · Guna People · Panama</p>
+        <h1>Mola Panel, Fishing Scene</h1>
+        <p class="detail-meta">Guna (Kuna) · San Blas Islands, Panama · 1969</p>
+
+        <p class="detail-description">
+          This mola panel depicts a traditional fishing scene with a sailing boat, fishing lines extending to fish below, a turtle, and what appears to be an iguana in the upper left. The imagery reflects daily life and the importance of fishing to Guna island communities.
+        </p>
+        <p class="detail-description">
+          Molas are created through reverse appliqué — multiple layers of fabric are stacked and cut away to reveal colors beneath, all secured with tiny, nearly invisible stitches. The technical work here is particularly fine, with tight stitching and balanced color composition on a traditional red base.
+        </p>
+
+        <div class="detail-specs">
+          <div class="spec-item">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">12 × 18 inches</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Reverse appliqué</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Cotton, thread</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">San Blas Islands</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <p>Living Archive of Textiles + Fiber · University of Kansas</p>
+    <p>3D scanning via photogrammetry</p>
+  </footer>
+
+  <script>
+    function showDetail(id) {
+      document.getElementById('home').style.display = 'none';
+      document.getElementById('collection').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+
+      document.querySelectorAll('.detail-section').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      document.getElementById('detail-' + id).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
+    function hideDetail() {
+      document.querySelectorAll('.detail-section').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      document.getElementById('home').style.display = 'flex';
+      document.getElementById('collection').style.display = 'block';
+      document.getElementById('footer').style.display = 'flex';
+    }
+
+    function showHome() {
+      hideDetail();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Keyboard: Escape to go back from detail view
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        const active = document.querySelector('.detail-section.active');
+        if (active) hideDetail();
+      }
+    });
+  </script>
 
 </body>
 </html>
