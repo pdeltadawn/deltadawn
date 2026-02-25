@@ -16,24 +16,45 @@
     }
 
     :root {
-      --bg: #f8f6f3;
-      --text: #2a2a2a;
+      --bg: #ede9e0;
+      --text: #1e1c18;
       --accent: #c45c3e;
-      --muted: #7a7a7a;
-      --muted-light: #b0aca7;
-      --card-bg: #ffffff;
-      --border: #e8e5e1;
+      --muted: #7a7570;
+      --muted-light: #a09890;
+      --card-bg: #e4e0d4;
+      --border: rgba(0, 0, 0, 0.1);
     }
 
     html {
       scroll-behavior: smooth;
+      background: #e8e4da;
     }
 
     body {
       font-family: 'DM Sans', sans-serif;
-      background: var(--bg);
+      background: #ede9e0;
+      background-attachment: fixed;
+      min-height: 100vh;
       color: var(--text);
       line-height: 1.6;
+      transition: background 0.5s ease;
+    }
+
+    /* ── Mola: jungle green world ── */
+    body.detail-mola {
+      --bg: #1a2e1a;
+      --text: #ede9e0;
+      --muted: #a0b89a;
+      --muted-light: #6a846a;
+      --card-bg: #213321;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #0f1d0f 0%,
+        #172617 30%,
+        #1c3020 65%,
+        #1a2e1a 100%
+      );
     }
 
     /* ── Navigation ── */
@@ -194,14 +215,14 @@
       position: relative;
       width: 100%;
       height: 380px;
-      background: linear-gradient(150deg, #f2f0ed, #e6e4e0);
+      background: #ffffff;
       overflow: hidden;
     }
 
     model-viewer {
       width: 100%;
       height: 100%;
-      --poster-color: transparent;
+      --poster-color: #ffffff;
     }
 
     model-viewer::part(default-progress-bar) {
@@ -324,7 +345,7 @@
       height: 72vh;
       min-height: 480px;
       max-height: 820px;
-      background: var(--card-bg);
+      background: #ffffff;
       border-radius: 8px;
       overflow: hidden;
       border: 1px solid var(--border);
@@ -343,8 +364,8 @@
       font-size: 0.65rem;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--muted);
-      background: rgba(248, 246, 243, 0.92);
+      color: rgba(255, 255, 255, 0.75);
+      background: rgba(0, 0, 0, 0.45);
       padding: 0.45rem 0.9rem;
       border-radius: 20px;
       pointer-events: none;
@@ -421,6 +442,156 @@
     .spec-value {
       font-family: 'Crimson Text', serif;
       font-size: 1.05rem;
+    }
+
+    /* ── Scroll Reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 1s ease var(--delay, 0ms),
+                  transform 1s ease var(--delay, 0ms);
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* Detail section entrance */
+    .detail-section.active {
+      animation: sectionEnter 0.5s ease forwards;
+    }
+
+    @keyframes sectionEnter {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .detail-section.active {
+        animation: none;
+      }
+    }
+
+    /* ── Mola: model viewer background ── */
+    #detail-mola .detail-model-container {
+      background: #ffffff;
+      /* To use a photo instead: background-image: url('your-image.jpg'); background-size: cover; */
+    }
+
+    #detail-mola model-viewer {
+      background-color: #ffffff;
+      --poster-color: #ffffff;
+    }
+
+    /* ── Rich Detail Page Sections ── */
+    .detail-section-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      margin-top: 3rem;
+    }
+
+    .detail-section-label:first-of-type {
+      margin-top: 0;
+    }
+
+    .section-rule {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2.5rem 0;
+    }
+
+    /* Voices placeholder */
+    .voices-placeholder {
+      border: 1px dashed var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      background: rgba(196, 92, 62, 0.08);
+    }
+
+    .voices-placeholder-note {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* Scan note — what was and wasn't captured */
+    .scan-note {
+      margin-top: 1.5rem;
+    }
+
+    .scan-captured,
+    .scan-missed {
+      font-size: 0.95rem;
+      line-height: 1.8;
+      padding: 1rem 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .scan-captured::before {
+      content: 'Captured — ';
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-light);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    .scan-missed::before {
+      content: 'Not captured — ';
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted-light);
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+
+    /* Connection threads */
+    .connection-threads {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .threads-label {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted-light);
+      margin-bottom: 1rem;
+    }
+
+    .thread-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .thread-tag {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.3rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      color: var(--muted);
+      background: transparent;
+      cursor: default;
     }
 
     /* ── Footer ── */
@@ -502,6 +673,7 @@
     <a href="#" class="logo" onclick="showHome(); return false;">Living Archive of Textiles + Fiber</a>
     <ul class="nav-links">
       <li><a href="#" onclick="showHome(); return false;">Collection</a></li>
+      <li><a href="methodology.html">Methodology</a></li>
     </ul>
   </nav>
 
@@ -729,6 +901,8 @@
     <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
 
     <div class="detail-grid">
+
+      <!-- Sticky model -->
       <div class="detail-model">
         <div class="detail-model-container">
           <model-viewer
@@ -739,42 +913,111 @@
             shadow-intensity="0.8"
             exposure="1.1"
             environment-image="neutral"
-            alt="Mola panel with fishing scene, reverse appliqué textile from Panama">
+            alt="Photogrammetric scan of a Guna mola panel depicting a fishing scene, San Blas Islands, Panama, 1969">
           </model-viewer>
           <div class="interaction-hint">drag to rotate · scroll to zoom</div>
         </div>
       </div>
 
+      <!-- Content column -->
       <div class="detail-info">
-        <p class="detail-object-label">Textile · Guna People · Panama</p>
-        <h1>Mola Panel, Fishing Scene</h1>
-        <p class="detail-meta">Guna (Kuna) · San Blas Islands, Panama · 1969</p>
+        <p class="detail-object-label reveal" style="--delay:0ms">Guna People · San Blas Islands, Panama</p>
+        <h1 class="reveal" style="--delay:80ms">Mola Panel, Fishing Scene</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">1969 · Acquired by Eileen Murphy · University of Kansas Textiles + Fiber Collection</p>
 
-        <p class="detail-description">
-          This mola panel depicts a traditional fishing scene with a sailing boat, fishing lines extending to fish below, a turtle, and what appears to be an iguana in the upper left. The imagery reflects daily life and the importance of fishing to Guna island communities.
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Guna scholars, artists, and cultural organizations — their words on mola-making, the 1925 Tule Revolution, women's labor, and cultural survival. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          This mola was made in 1969 by a Guna woman whose name was not recorded. It depicts a fishing scene — a sailing boat, fish on lines, a turtle, an iguana — imagery from daily life in the San Blas Islands. It was made through reverse appliqué: layers of cotton stacked and cut away to reveal color beneath, secured with stitches so small they nearly disappear.
         </p>
-        <p class="detail-description">
-          Molas are created through reverse appliqué — multiple layers of fabric are stacked and cut away to reveal colors beneath, all secured with tiny, nearly invisible stitches. The technical work here is particularly fine, with tight stitching and balanced color composition on a traditional red base.
+        <p class="detail-description reveal" style="--delay:160ms">
+          She made it knowing it would travel. Molas entered exchange with outsiders on terms Guna women chose — a practice simultaneously economic and cultural, a way of making the tradition visible on their own terms. This object was positioned toward encounter before it reached us.
         </p>
 
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          In 1969 — the same year this mola was made — Eileen Murphy, then a weaving professor at the University of Kansas, purchased it. The circumstances of that transaction are not recorded. Murphy has since died, and her knowledge of the acquisition — where, from whom, what was said — went with her.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          The mola entered the KU Textiles and Fiber collection. It moved from exchange into institution. What that transition meant for the object is not documented.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          Decades later, it was photographed for a digital catalog. Then it was placed on a table and photographed from dozens of angles. Those photographs were processed into a point cloud, then a mesh, then a texture map, then a GLB file small enough to load in a browser.
+        </p>
+
+        <div class="scan-note">
+          <p class="scan-captured reveal" style="--delay:0ms">The surface. The distribution of color. The approximate topography of layers built up through years of stitching.</p>
+          <p class="scan-missed reveal" style="--delay:300ms">Weight. The sound the fabric makes. The smell of dye. The resistance of cloth under a needle. The memory held in the maker's hands. The conversation between Murphy and the woman who made it. The name of the woman who made it.</p>
+        </div>
+
+        <p class="detail-description reveal" style="--delay:0ms; margin-top: 1.5rem;">
+          You are looking at evidence of the encounter between a scanner and this surface. That is not nothing. It is also not the mola.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
         <div class="detail-specs">
-          <div class="spec-item">
-            <div class="spec-label">Dimensions</div>
-            <div class="spec-value">12 × 18 inches</div>
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
           </div>
-          <div class="spec-item">
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">San Blas Islands (Comarca Guna Yala), Panama</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">1969</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
             <div class="spec-label">Technique</div>
             <div class="spec-value">Reverse appliqué</div>
           </div>
-          <div class="spec-item">
+          <div class="spec-item reveal" style="--delay:200ms">
             <div class="spec-label">Materials</div>
             <div class="spec-value">Cotton, thread</div>
           </div>
-          <div class="spec-item">
-            <div class="spec-label">Origin</div>
-            <div class="spec-value">San Blas Islands</div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">12 × 18 inches</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">1969 · Eileen Murphy (d.)</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">[to be added]</div>
           </div>
         </div>
+
+        <!-- Connection threads -->
+        <div class="connection-threads">
+          <p class="threads-label reveal">Threads in common</p>
+          <div class="thread-list">
+            <span class="thread-tag reveal" style="--delay:0ms">anonymous hand</span>
+            <span class="thread-tag reveal" style="--delay:70ms">plant matter</span>
+            <span class="thread-tag reveal" style="--delay:140ms">cotton</span>
+            <span class="thread-tag reveal" style="--delay:210ms">color as language</span>
+            <span class="thread-tag reveal" style="--delay:280ms">objects that traveled</span>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
@@ -786,6 +1029,30 @@
   </footer>
 
   <script>
+    // ── Scroll reveal ──
+    let revealObserver = null;
+
+    function setupReveal(sectionId) {
+      if (revealObserver) revealObserver.disconnect();
+
+      const section = document.getElementById('detail-' + sectionId);
+      const els = section.querySelectorAll('.reveal');
+
+      // Reset all to hidden
+      els.forEach(el => el.classList.remove('revealed'));
+
+      revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+      els.forEach(el => revealObserver.observe(el));
+    }
+
+    // ── Navigation ──
     function showDetail(id) {
       document.getElementById('home').style.display = 'none';
       document.getElementById('collection').style.display = 'none';
@@ -796,13 +1063,25 @@
       });
 
       document.getElementById('detail-' + id).classList.add('active');
+
+      // Apply object-specific color world
+      document.body.className = 'detail-' + id;
+
       window.scrollTo({ top: 0, behavior: 'instant' });
+
+      // Wait for browser to render the section before observing
+      setTimeout(() => setupReveal(id), 80);
     }
 
     function hideDetail() {
+      if (revealObserver) revealObserver.disconnect();
+
       document.querySelectorAll('.detail-section').forEach(el => {
         el.classList.remove('active');
       });
+
+      // Return to base gray
+      document.body.className = '';
 
       document.getElementById('home').style.display = 'flex';
       document.getElementById('collection').style.display = 'block';
@@ -814,7 +1093,7 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    // Keyboard: Escape to go back from detail view
+    // Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') {
         const active = document.querySelector('.detail-section.active');
