@@ -6,7 +6,7 @@
   <title>Living Archive of Textiles + Fiber</title>
 
   <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     * {
@@ -54,6 +54,23 @@
         #172617 30%,
         #1c3020 65%,
         #1a2e1a 100%
+      );
+    }
+
+    /* ── Ikat: deep wine world ── */
+    body.detail-ikat {
+      --bg: #2a1518;
+      --text: #ede9e0;
+      --muted: #b89a94;
+      --muted-light: #8a6a64;
+      --card-bg: #351c20;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #1a0c0f 0%,
+        #240f13 30%,
+        #2e1418 65%,
+        #2a1518 100%
       );
     }
 
@@ -105,30 +122,53 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: center;
+      text-align: center;
       padding: 0 3rem;
-      max-width: 960px;
+      background: #ffffff;
     }
 
     .hero h1 {
-      font-family: 'Crimson Text', serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
-      font-weight: 400;
-      line-height: 1.08;
-      margin-bottom: 2rem;
-      font-style: italic;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 2.5rem;
     }
 
-    .hero h1 span {
-      color: var(--accent);
+    .h-large {
+      font-family: 'Big Shoulders Display', sans-serif;
+      font-size: clamp(3.8rem, 10vw, 7.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      line-height: 0.92;
+    }
+
+    .h-connector {
+      font-family: 'Crimson Text', serif;
+      font-style: italic;
+      font-size: clamp(1rem, 2.2vw, 1.6rem);
+      font-weight: 400;
+      color: var(--muted);
+      letter-spacing: 0.2em;
+      padding: 0.5rem 0;
     }
 
     .hero-intro {
-      font-size: 1.05rem;
+      font-size: 0.88rem;
       color: var(--muted);
-      max-width: 480px;
-      margin-bottom: 3.5rem;
-      line-height: 1.75;
+      max-width: 380px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
       font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* White nav when on home page */
+    body:not([class]) nav,
+    body[class=""] nav {
+      background: linear-gradient(to bottom, #ffffff 70%, transparent);
     }
 
     .scroll-hint {
@@ -217,6 +257,13 @@
       height: 380px;
       background: #ffffff;
       overflow: hidden;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     model-viewer {
@@ -484,12 +531,21 @@
     /* ── Mola: model viewer background ── */
     #detail-mola .detail-model-container {
       background: #ffffff;
-      /* To use a photo instead: background-image: url('your-image.jpg'); background-size: cover; */
     }
 
     #detail-mola model-viewer {
       background-color: #ffffff;
       --poster-color: #ffffff;
+    }
+
+    /* ── Ikat: model viewer background ── */
+    #detail-ikat .detail-model-container {
+      background: #f5f0e8;
+    }
+
+    #detail-ikat model-viewer {
+      background-color: #f5f0e8;
+      --poster-color: #f5f0e8;
     }
 
     /* ── Rich Detail Page Sections ── */
@@ -594,6 +650,53 @@
       cursor: default;
     }
 
+    /* ── Archive record link ── */
+    .archive-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+      margin-top: 2.5rem;
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid var(--accent);
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    .archive-link:hover {
+      opacity: 1;
+    }
+
+    /* ── Velvet: deep plum world ── */
+    body.detail-velvet {
+      --bg: #1e1228;
+      --text: #ede9e0;
+      --muted: #a894b8;
+      --muted-light: #7a6490;
+      --card-bg: #251630;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #120a1a 0%,
+        #180e22 30%,
+        #1e1228 65%,
+        #1c1025 100%
+      );
+    }
+
+    #detail-velvet .detail-model-container {
+      background: #f5f0e8;
+    }
+
+    #detail-velvet model-viewer {
+      background-color: #f5f0e8;
+      --poster-color: #f5f0e8;
+    }
+
     /* ── Footer ── */
     footer {
       padding: 3.5rem 3rem;
@@ -679,8 +782,12 @@
 
   <!-- Hero -->
   <section class="hero" id="home">
-    <h1>Material <span>Histories,</span><br>Woven Worlds</h1>
-    <p class="hero-intro">Rotate, zoom, and examine structures that hands once made and time has carried forward. A virtual exhibition of 3D-scanned textiles from the KU collection.</p>
+    <h1>
+      <span class="h-large">Things Made</span>
+      <span class="h-connector">by</span>
+      <span class="h-large">Hand</span>
+    </h1>
+    <p class="hero-intro">A 3D digital exhibition of fiber and textile objects from the KU collection. Rotate, zoom, and examine structures that hands once made.</p>
     <div class="scroll-hint">Scroll to explore</div>
   </section>
 
@@ -688,7 +795,7 @@
   <section class="collection" id="collection">
     <div class="section-header">
       <p class="section-label">The Collection</p>
-      <h2>Objects in the Archive</h2>
+      <h2>Objects in the Exhibition</h2>
       <p>Each object links to others through material, technique, and origin — a web of making that crosses centuries and continents.</p>
     </div>
 
@@ -764,7 +871,47 @@
         </div>
       </article>
 
-      <!-- Card 4: Palm Basket (coming soon) -->
+      <!-- Card 4: Ikat -->
+      <article class="object-card" onclick="showDetail('ikat')">
+        <div class="model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/ikat.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="12deg"
+            shadow-intensity="0.5"
+            exposure="1.0"
+            alt="Uzbek ikat textile panel">
+          </model-viewer>
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Uzbek Ikat Panel</h3>
+          <p class="object-meta">Uzbekistan · 19th–20th century</p>
+          <div class="object-tags">
+            <span class="tag">ikat</span>
+            <span class="tag">silk</span>
+            <span class="tag">resist-dye</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 5: Cut Velvet -->
+      <article class="object-card" onclick="showDetail('velvet')">
+        <div class="model-container">
+          <img src="velvet.jpg" alt="Cut velvet panel by Rasuljon Mirzaakhmedon" class="card-image">
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Cut Velvet Panel</h3>
+          <p class="object-meta">Rasuljon Mirzaakhmedon · Uzbekistan</p>
+          <div class="object-tags">
+            <span class="tag">cut velvet</span>
+            <span class="tag">silk</span>
+            <span class="tag">pile weave</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 6: Palm Basket (coming soon) -->
       <article class="object-card coming-soon">
         <div class="model-container">
           <div class="placeholder-model">
@@ -837,6 +984,8 @@
             <div class="spec-value">Unknown</div>
           </div>
         </div>
+        <!-- [TO DO: add Omeka URL for damask] -->
+        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link" target="_blank">View in the Living Archive →</a> -->
       </div>
     </div>
   </section>
@@ -892,6 +1041,8 @@
             <div class="spec-value">Unknown</div>
           </div>
         </div>
+        <!-- [TO DO: add Omeka URL for basket] -->
+        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link" target="_blank">View in the Living Archive →</a> -->
       </div>
     </div>
   </section>
@@ -1005,18 +1156,263 @@
             <div class="spec-value">[to be added]</div>
           </div>
         </div>
+        <!-- [TO DO: add Omeka URL for mola] -->
+        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link reveal" target="_blank">View in the Living Archive →</a> -->
 
-        <!-- Connection threads -->
-        <div class="connection-threads">
-          <p class="threads-label reveal">Threads in common</p>
-          <div class="thread-list">
-            <span class="thread-tag reveal" style="--delay:0ms">anonymous hand</span>
-            <span class="thread-tag reveal" style="--delay:70ms">plant matter</span>
-            <span class="thread-tag reveal" style="--delay:140ms">cotton</span>
-            <span class="thread-tag reveal" style="--delay:210ms">color as language</span>
-            <span class="thread-tag reveal" style="--delay:280ms">objects that traveled</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Ikat ── -->
+  <!-- NOTE FOR POPPY: This is placeholder text based on what is generally known about Uzbek ikat.
+       Everything here should be verified against what you know about this specific object.
+       Sections marked [TO DO] are where your own thinking especially needs to go. -->
+  <section class="detail-section" id="detail-ikat">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <!-- Sticky model -->
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/ikat.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Uzbek ikat textile panel, resist-dyed silk">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <!-- Content column -->
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">Uzbekistan · Central Asia</p>
+        <h1 class="reveal" style="--delay:80ms">Uzbek Ikat Panel</h1>
+        <!-- [TO DO: update date and acquisition details once confirmed] -->
+        <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · Acquired by Mary Anne Jordan · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <!-- [TO DO: This section is a placeholder — Poppy, this is where you might
+             seek out Uzbek textile scholars, weavers still working in the tradition,
+             or written accounts from the ikat-producing centers like Margilan or Bukhara] -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Uzbek textile scholars, contemporary ikat weavers, and Central Asian cultural historians — their words on the abr tradition, the labor of resist-dyeing, and the survival of this practice across Soviet collectivization and into the present. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <!-- [TO DO: Replace or revise this with your own understanding of this specific panel.
+             The text below draws on general knowledge of Uzbek ikat — treat it as a starting point,
+             not a finished account.] -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          This panel is an example of <em>abr</em> — the Uzbek term for ikat, meaning "cloud." The name describes what the technique produces: patterns with soft, feathered edges that seem to shift and blur as the cloth moves. Those blurred lines are not imprecision. They are the record of a calculation made before weaving began, when bundles of warp threads were tied, dipped in dye, re-tied, and dipped again — each step building toward a pattern visible only in the mind of the dyer until the loom finally revealed it.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Uzbek ikat production was centered in the Fergana Valley — Margilan, Namangan, Kokand — and in the older trade cities of Bukhara and Samarkand. These textiles moved along the Silk Road as luxury goods, traded across Central Asia, Persia, and into South Asia and Europe. The work of making them was divided: men typically wove, while the dyeing knowledge — the calculations of resist, sequence, and color — was often held by specialist dyers whose expertise was a form of intellectual and economic power.
+        </p>
+        <!-- [TO DO: What do you know about how Jordan acquired this? When, from whom, under what circumstances?
+             That translation chain — from maker to market to Jordan to KU — is the core of what this archive traces.] -->
+        <p class="detail-description reveal" style="--delay:240ms">
+          How this panel came to Professor Mary Anne Jordan, and through her to the KU collection, is not yet fully documented here. That chain of hands — the dyer, the weaver, the traders, the circumstances of its departure from Uzbekistan — remains to be traced.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <!-- [TO DO: Fill in what you learn about Jordan and the acquisition.
+             When did she acquire it? Travel? Market? Dealer?
+             What do you know about her and her collecting practices?] -->
+        <p class="detail-description reveal" style="--delay:80ms">
+          Mary Anne Jordan, a professor in the KU Textiles and Fiber program, acquired this panel at a time and in circumstances not yet recorded in this archive. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Uzbek ikats entered Western collections through several channels from the mid-19th century onward: diplomatic gifts, colonial-era acquisition during Russian imperial expansion into Central Asia, the mid-20th century tourist trade, and later through dealers specializing in Central Asian textiles. Which of these paths this panel traveled is an open question.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          Soviet collectivization in the 1920s–30s reorganized ikat production into state factories, severing some lineages of specialist knowledge. The panel's date of manufacture — and therefore the conditions under which it was made — matters to the story of what it is.
+        </p>
+
+        <div class="scan-note">
+          <!-- [TO DO: Revise these with your specific observations from scanning this object.
+               What did the scan capture well? What did it miss or flatten?] -->
+          <p class="scan-captured reveal" style="--delay:0ms">The surface patterning. The color distribution across the panel. The texture of the weave structure and the slight irregularities where the resist-dyed threads met the loom.</p>
+          <p class="scan-missed reveal" style="--delay:300ms">The hand of the cloth — its weight, drape, the way silk moves differently from cotton. The smell of natural dyes. The sheen that changes with light and angle in ways no static render captures. The knowledge carried in the hands of the dyer who calculated the pattern before the first thread was bound.</p>
+        </div>
+
+        <p class="detail-description reveal" style="--delay:0ms; margin-top: 1.5rem;">
+          The scan preserves a surface. The ikat was made to be worn, to move, to be seen in changing light. What you see here is one fixed encounter with it.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <!-- [TO DO: Fill in accurate dimensions, date, materials once confirmed.
+             Update "Acquired" with Jordan's full acquisition info when known.] -->
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Uzbekistan [region to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Warp ikat (abr)</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Silk [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">Mary Anne Jordan · [date to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">[to be added]</div>
           </div>
         </div>
+        <!-- [TO DO: add Omeka URL for ikat] -->
+        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link reveal" target="_blank">View in the Living Archive →</a> -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Cut Velvet ── -->
+  <section class="detail-section" id="detail-velvet">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/velvet.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Cut velvet panel by Rasuljon Mirzaakhmedon, Margilan, Uzbekistan">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">Uzbekistan · Fergana Valley</p>
+        <h1 class="reveal" style="--delay:80ms">Cut Velvet Panel</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">Rasuljon Mirzaakhmedon · Acquired by Mary Anne Jordan · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <!-- [TO DO: Rasuljon Mirzaakhmedon is a living, documented maker — this is an opportunity
+             for direct voice in a way the other objects don't allow. Consider reaching out, or
+             seeking out his own writing, interviews, or statements about his practice.] -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">Rasuljon Mirzaakhmedon is a living master weaver from Margilan in the Fergana Valley — one of the few practitioners keeping the traditional silk velvet technique alive. This section will feature his words on the practice of cut velvet weaving, the knowledge it carries, and what it means to make these objects now. Research and outreach in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <!-- [TO DO: Replace and expand with what you know about this specific panel —
+             its pattern, its colors, its dimensions. The text below is a starting point.] -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          This panel was woven by Rasuljon Mirzaakhmedon in Margilan, Uzbekistan — the center of silk velvet production in the Fergana Valley for centuries. The technique is called <em>bakhmal</em>: a pile weave in which loops of silk thread are raised on a loom and then cut, producing a surface of dense, light-catching fiber. The cutting is what makes it velvet. The height of the pile, the precision of the cut, the quality of the silk — these are decisions the weaver makes with each pass of the blade.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Unlike the ikat in this exhibition, whose maker's name was never recorded, this object arrives with its maker present. Mirzaakhmedon has been recognized internationally as a master of traditional Uzbek textile arts. That recognition is itself a form of translation — the work is valued, circulated, documented. What that means for the work, and for the weaver, is a question this archive holds without answering.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <!-- [TO DO: What do you know about how Jordan acquired this? Same context as the ikat?
+             Different trip, different circumstance? The fact that this has a known maker
+             changes the nature of the acquisition question.] -->
+        <p class="detail-description reveal" style="--delay:80ms">
+          Mary Anne Jordan acquired this panel — the circumstances of that acquisition are not yet documented here. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          That Mirzaakhmedon's name is attached to this object — that the maker is known — marks a different kind of entry into this collection than the anonymous hands behind the ikat or the mola. The knowledge of who made it does not resolve the questions of how it traveled, or what its presence in a Kansas university collection means. It reframes them.
+        </p>
+
+        <div class="scan-note">
+          <!-- [TO DO: fill in from your actual scan experience when the 3D model is complete] -->
+          <p class="scan-captured reveal" style="--delay:0ms">[To be written once the scan is complete — what the photogrammetry captured of this surface.]</p>
+          <p class="scan-missed reveal" style="--delay:300ms">The particular quality of cut silk pile — the way it absorbs and reflects light differently depending on the angle, the direction of the nap. The softness. The smell of the fiber. The weight of a panel made entirely of silk. The sound of the blade that made it velvet instead of something else.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <!-- [TO DO: fill in dimensions, date, exact origin once confirmed] -->
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Rasuljon Mirzaakhmedon</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Margilan, Fergana Valley, Uzbekistan</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Cut velvet (bakhmal)</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Silk [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">Mary Anne Jordan · [date to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">[to be added]</div>
+          </div>
+        </div>
+
+        <a href="https://kutextiles.omeka.net/items/show/11" class="archive-link reveal" target="_blank" rel="noopener">View in the Living Archive →</a>
 
       </div>
     </div>
@@ -1080,8 +1476,8 @@
         el.classList.remove('active');
       });
 
-      // Return to base gray
-      document.body.className = '';
+      // Return to home (remove class entirely so nav returns to white)
+      document.body.removeAttribute('class');
 
       document.getElementById('home').style.display = 'flex';
       document.getElementById('collection').style.display = 'block';
