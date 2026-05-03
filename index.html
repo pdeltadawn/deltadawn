@@ -108,6 +108,23 @@
       );
     }
 
+    /* ── Faja: warm gold/teal world ── */
+    body.detail-faja {
+      --bg: #1a1c14;
+      --text: #ede9e0;
+      --muted: #b8b090;
+      --muted-light: #7a7658;
+      --card-bg: #24261a;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #0f100a 0%,
+        #181a10 30%,
+        #1e2016 65%,
+        #1a1c14 100%
+      );
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -623,6 +640,16 @@
       --poster-color: #f5f0e8;
     }
 
+    /* ── Faja: model viewer background ── */
+    #detail-faja .detail-model-container {
+      background: #f5f0e8;
+    }
+
+    #detail-faja model-viewer {
+      background-color: #f5f0e8;
+      --poster-color: #f5f0e8;
+    }
+
     /* ── Rich Detail Page Sections ── */
     .detail-section-label {
       font-size: 0.65rem;
@@ -880,15 +907,7 @@
       <!-- Card 1: Damask -->
       <article class="object-card" onclick="showDetail('damask')">
         <div class="model-container">
-          <model-viewer
-            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask2.glb"
-            camera-controls
-            auto-rotate
-            rotation-per-second="12deg"
-            shadow-intensity="0.5"
-            exposure="1.0"
-            alt="Figural damask fragment with bar scene">
-          </model-viewer>
+          <img src="damask.jpg" alt="Figural damask fragment with bar scene" class="card-image">
         </div>
         <div class="object-info">
           <h3 class="object-title">Figural Damask Fragment</h3>
@@ -976,6 +995,22 @@
             <span class="tag">embroidery</span>
             <span class="tag">mirror work</span>
             <span class="tag">cotton</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 7: Faja (Andean Belt) -->
+      <article class="object-card" onclick="showDetail('faja')">
+        <div class="model-container">
+          <img src="belt.jpg" alt="Andean woven belt with llama motifs" class="card-image">
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Faja (Woven Belt)</h3>
+          <p class="object-meta">Peru · Andes</p>
+          <div class="object-tags">
+            <span class="tag">warp-faced</span>
+            <span class="tag">wool</span>
+            <span class="tag">pick-up</span>
           </div>
         </div>
       </article>
@@ -1578,6 +1613,109 @@
           <div class="spec-item reveal" style="--delay:350ms">
             <div class="spec-label">Scan date</div>
             <div class="spec-value">[to be added]</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Faja ── -->
+  <section class="detail-section" id="detail-faja">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/belt.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Andean woven belt with llama and geometric motifs">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">Peru · Andes</p>
+        <h1 class="reveal" style="--delay:80ms">Faja (Woven Belt)</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Andean textile scholars, Quechua and Aymara weavers, and voices from highland communities where belt-weaving continues — their words on the meanings carried in pattern and color, the role of fajas in daily life and ceremony, and the knowledge passed through generations of weavers. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          A faja — a woven belt or sash from the Andean highlands. Narrow and dense, it is warp-faced: the warp threads dominate entirely, creating a sturdy fabric that holds its shape under tension. The patterning is built through pick-up or complementary warp technique, where threads are selectively raised to create figures against a contrasting ground.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Stylized llamas or alpacas appear in the burgundy and gold bands — the same camelid motifs that mark the chullo in this collection. Human figures, possibly herders, stand among them. The colors are classic highland Andean: gold, deep burgundy, teal, magenta, white. At each end, multicolor braided cords serve as ties.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          Fajas are worn wrapped around the waist — functional (supporting the lower back, holding garments in place) and symbolic (marking community, region, sometimes age or marital status). The patterns are not arbitrary decoration. They encode meaning legible to those who know how to read them, even as that legibility fades with distance from the weaving community.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          How this faja came to the KU collection is not yet documented here. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Andean textiles have entered Western collections through ethnographic expeditions, tourist markets, fair trade organizations, dealers, and individual travelers. A belt like this one — functional, personal, encoded with local meaning — carries a different weight than a textile made for export. Whether this faja was worn, gifted, sold, or made specifically for outside exchange is an open question.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Peru [region to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Warp-faced plain weave with pick-up patterning</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Wool [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">Not yet scanned</div>
           </div>
         </div>
 
