@@ -74,6 +74,40 @@
       );
     }
 
+    /* ── Chullo: warm magenta world ── */
+    body.detail-chullo {
+      --bg: #2e1a24;
+      --text: #ede9e0;
+      --muted: #c4a0b0;
+      --muted-light: #8a6878;
+      --card-bg: #3a2030;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #1a0c14 0%,
+        #24101a 30%,
+        #2e1a24 65%,
+        #2a1620 100%
+      );
+    }
+
+    /* ── Shisha: deep crimson world ── */
+    body.detail-shisha {
+      --bg: #2a1012;
+      --text: #ede9e0;
+      --muted: #c4a090;
+      --muted-light: #8a6058;
+      --card-bg: #351418;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #1a0808 0%,
+        #240c0e 30%,
+        #2e1214 65%,
+        #2a1012 100%
+      );
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -403,6 +437,27 @@
       height: 100%;
     }
 
+    .detail-image-container {
+      position: relative;
+      width: 100%;
+      height: 72vh;
+      min-height: 480px;
+      max-height: 820px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .detail-image-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
     .interaction-hint {
       position: absolute;
       bottom: 1.2rem;
@@ -544,6 +599,26 @@
     }
 
     #detail-ikat model-viewer {
+      background-color: #f5f0e8;
+      --poster-color: #f5f0e8;
+    }
+
+    /* ── Chullo: model viewer background ── */
+    #detail-chullo .detail-model-container {
+      background: #f5f0e8;
+    }
+
+    #detail-chullo model-viewer {
+      background-color: #f5f0e8;
+      --poster-color: #f5f0e8;
+    }
+
+    /* ── Shisha: model viewer background ── */
+    #detail-shisha .detail-model-container {
+      background: #f5f0e8;
+    }
+
+    #detail-shisha model-viewer {
       background-color: #f5f0e8;
       --poster-color: #f5f0e8;
     }
@@ -724,7 +799,8 @@
         top: 0;
       }
 
-      .detail-model-container {
+      .detail-model-container,
+      .detail-image-container {
         height: 55vh;
       }
     }
@@ -825,30 +901,7 @@
         </div>
       </article>
 
-      <!-- Card 2: Basket -->
-      <article class="object-card" onclick="showDetail('basket')">
-        <div class="model-container">
-          <model-viewer
-            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-            camera-controls
-            auto-rotate
-            rotation-per-second="12deg"
-            shadow-intensity="0.5"
-            exposure="1.0"
-            alt="Sweetgrass basket with lid">
-          </model-viewer>
-        </div>
-        <div class="object-info">
-          <h3 class="object-title">Sweetgrass Basket with Lid</h3>
-          <p class="object-meta">Unknown maker · Found object</p>
-          <div class="object-tags">
-            <span class="tag">coiled</span>
-            <span class="tag">sweetgrass</span>
-          </div>
-        </div>
-      </article>
-
-      <!-- Card 3: Mola -->
+      <!-- Card 2: Mola -->
       <article class="object-card" onclick="showDetail('mola')">
         <div class="model-container">
           <img src="mola.jpg" alt="Mola panel with fishing scene" class="card-image">
@@ -863,7 +916,7 @@
         </div>
       </article>
 
-      <!-- Card 4: Ikat -->
+      <!-- Card 3: Ikat -->
       <article class="object-card" onclick="showDetail('ikat')">
         <div class="model-container">
           <img src="ikat.jpg" alt="Uzbek ikat textile panel" class="card-image">
@@ -879,7 +932,7 @@
         </div>
       </article>
 
-      <!-- Card 5: Cut Velvet -->
+      <!-- Card 4: Cut Velvet -->
       <article class="object-card" onclick="showDetail('velvet')">
         <div class="model-container">
           <img src="velvet.jpg" alt="Cut velvet panel by Rasuljon Mirzaakhmedon" class="card-image">
@@ -895,24 +948,38 @@
         </div>
       </article>
 
-      <!-- Card 6: Palm Basket (coming soon) -->
-      <article class="object-card coming-soon">
+      <!-- Card 5: Chullo -->
+      <article class="object-card" onclick="showDetail('chullo')">
         <div class="model-container">
-          <div class="placeholder-model">
-            3D scan in progress
-            <small>palm-basket.glb</small>
-          </div>
+          <img src="hat.jpg" alt="Peruvian chullo knitted cap with llama motifs" class="card-image">
         </div>
         <div class="object-info">
-          <h3 class="object-title">Palm Basket</h3>
-          <p class="object-meta">Oaxaca · Mexico</p>
+          <h3 class="object-title">Chullo (Knitted Cap)</h3>
+          <p class="object-meta">Peru · Andes</p>
           <div class="object-tags">
-            <span class="tag">plaited</span>
-            <span class="tag">palm</span>
+            <span class="tag">knit</span>
+            <span class="tag">wool</span>
+            <span class="tag">stranded colorwork</span>
           </div>
-          <p class="coming-soon-badge">Model coming soon</p>
         </div>
       </article>
+
+      <!-- Card 6: Shisha Embroidery -->
+      <article class="object-card" onclick="showDetail('shisha')">
+        <div class="model-container">
+          <img src="shisha.jpg" alt="Shisha mirror work embroidery panel from Gujarat" class="card-image">
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Shisha Embroidery Panel</h3>
+          <p class="object-meta">Gujarat or Rajasthan · India</p>
+          <div class="object-tags">
+            <span class="tag">embroidery</span>
+            <span class="tag">mirror work</span>
+            <span class="tag">cotton</span>
+          </div>
+        </div>
+      </article>
+
 
     </div>
   </section>
@@ -968,65 +1035,6 @@
             <div class="spec-value">Unknown</div>
           </div>
         </div>
-        <!-- [TO DO: add Omeka URL for damask] -->
-        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link" target="_blank">View in the Living Archive →</a> -->
-      </div>
-    </div>
-  </section>
-
-  <!-- ── Detail: Basket ── -->
-  <section class="detail-section" id="detail-basket">
-    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
-
-    <div class="detail-grid">
-      <div class="detail-model">
-        <div class="detail-model-container">
-          <model-viewer
-            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/basket.glb"
-            camera-controls
-            auto-rotate
-            rotation-per-second="8deg"
-            shadow-intensity="0.8"
-            exposure="1.1"
-            environment-image="neutral"
-            alt="Sweetgrass basket with lid, coiled construction">
-          </model-viewer>
-          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
-        </div>
-      </div>
-
-      <div class="detail-info">
-        <p class="detail-object-label">Textile · Found Object</p>
-        <h1>Sweetgrass Basket with Lid</h1>
-        <p class="detail-meta">Unknown maker · Found object</p>
-
-        <p class="detail-description">
-          A coiled sweetgrass basket with fitted lid, discovered at a thrift store. The coiling technique creates concentric rings visible on the lid and body, with subtle color variation in the natural grass material. The form suggests it was made for storage or as a decorative object.
-        </p>
-        <p class="detail-description">
-          Sweetgrass basketry has deep roots in African American craft traditions, particularly in the Lowcountry region of South Carolina. Without provenance, we cannot attribute this basket to a specific tradition, but its construction demonstrates skilled handwork.
-        </p>
-
-        <div class="detail-specs">
-          <div class="spec-item">
-            <div class="spec-label">Dimensions</div>
-            <div class="spec-value">~6 × 8 inches</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-label">Technique</div>
-            <div class="spec-value">Coiled</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-label">Materials</div>
-            <div class="spec-value">Sweetgrass</div>
-          </div>
-          <div class="spec-item">
-            <div class="spec-label">Provenance</div>
-            <div class="spec-value">Unknown</div>
-          </div>
-        </div>
-        <!-- [TO DO: add Omeka URL for basket] -->
-        <!-- <a href="https://kutextiles.omeka.net/items/show/XX" class="archive-link" target="_blank">View in the Living Archive →</a> -->
       </div>
     </div>
   </section>
@@ -1147,9 +1155,6 @@
   </section>
 
   <!-- ── Detail: Ikat ── -->
-  <!-- NOTE FOR POPPY: This is placeholder text based on what is generally known about Uzbek ikat.
-       Everything here should be verified against what you know about this specific object.
-       Sections marked [TO DO] are where your own thinking especially needs to go. -->
   <section class="detail-section" id="detail-ikat">
     <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
 
@@ -1176,15 +1181,11 @@
       <div class="detail-info">
         <p class="detail-object-label reveal" style="--delay:0ms">Uzbekistan · Central Asia</p>
         <h1 class="reveal" style="--delay:80ms">Uzbek Ikat Panel</h1>
-        <!-- [TO DO: update date and acquisition details once confirmed] -->
         <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · Acquired by Mary Anne Jordan · University of Kansas Textiles + Fiber Collection</p>
 
         <hr class="section-rule reveal" style="--delay:220ms">
 
         <!-- In Their Words -->
-        <!-- [TO DO: This section is a placeholder — Poppy, this is where you might
-             seek out Uzbek textile scholars, weavers still working in the tradition,
-             or written accounts from the ikat-producing centers like Margilan or Bukhara] -->
         <p class="detail-section-label reveal">In Their Words</p>
         <div class="voices-placeholder reveal" style="--delay:80ms">
           <p class="voices-placeholder-note">This section will feature writing by Uzbek textile scholars, contemporary ikat weavers, and Central Asian cultural historians — their words on the abr tradition, the labor of resist-dyeing, and the survival of this practice across Soviet collectivization and into the present. Research in progress.</p>
@@ -1193,9 +1194,6 @@
         <hr class="section-rule reveal">
 
         <!-- The Object -->
-        <!-- [TO DO: Replace or revise this with your own understanding of this specific panel.
-             The text below draws on general knowledge of Uzbek ikat — treat it as a starting point,
-             not a finished account.] -->
         <p class="detail-section-label reveal">The Object</p>
         <p class="detail-description reveal" style="--delay:80ms">
           This panel is an example of <em>abr</em> — the Uzbek term for ikat, meaning "cloud." The name describes what the technique produces: patterns with soft, feathered edges that seem to shift and blur as the cloth moves. Those blurred lines are not imprecision. They are the record of a calculation made before weaving began, when bundles of warp threads were tied, dipped in dye, re-tied, and dipped again — each step building toward a pattern visible only in the mind of the dyer until the loom finally revealed it.
@@ -1203,8 +1201,6 @@
         <p class="detail-description reveal" style="--delay:160ms">
           Uzbek ikat production was centered in the Fergana Valley — Margilan, Namangan, Kokand — and in the older trade cities of Bukhara and Samarkand. These textiles moved along the Silk Road as luxury goods, traded across Central Asia, Persia, and into South Asia and Europe. The work of making them was divided: men typically wove, while the dyeing knowledge — the calculations of resist, sequence, and color — was often held by specialist dyers whose expertise was a form of intellectual and economic power.
         </p>
-        <!-- [TO DO: What do you know about how Jordan acquired this? When, from whom, under what circumstances?
-             That translation chain — from maker to market to Jordan to KU — is the core of what this archive traces.] -->
         <p class="detail-description reveal" style="--delay:240ms">
           How this panel came to Professor Mary Anne Jordan, and through her to the KU collection, is not yet fully documented here. That chain of hands — the dyer, the weaver, the traders, the circumstances of its departure from Uzbekistan — remains to be traced.
         </p>
@@ -1213,9 +1209,6 @@
 
         <!-- The Translation Chain -->
         <p class="detail-section-label reveal">The Translation Chain</p>
-        <!-- [TO DO: Fill in what you learn about Jordan and the acquisition.
-             When did she acquire it? Travel? Market? Dealer?
-             What do you know about her and her collecting practices?] -->
         <p class="detail-description reveal" style="--delay:80ms">
           Mary Anne Jordan, a professor in the KU Textiles and Fiber program, acquired this panel at a time and in circumstances not yet recorded in this archive. [To be expanded as research continues.]
         </p>
@@ -1227,8 +1220,6 @@
         </p>
 
         <div class="scan-note">
-          <!-- [TO DO: Revise these with your specific observations from scanning this object.
-               What did the scan capture well? What did it miss or flatten?] -->
           <p class="scan-captured reveal" style="--delay:0ms">The surface patterning. The color distribution across the panel. The texture of the weave structure and the slight irregularities where the resist-dyed threads met the loom.</p>
           <p class="scan-missed reveal" style="--delay:300ms">The hand of the cloth — its weight, drape, the way silk moves differently from cotton. The smell of natural dyes. The sheen that changes with light and angle in ways no static render captures. The knowledge carried in the hands of the dyer who calculated the pattern before the first thread was bound.</p>
         </div>
@@ -1241,8 +1232,6 @@
 
         <!-- Record -->
         <p class="detail-section-label reveal">Record</p>
-        <!-- [TO DO: Fill in accurate dimensions, date, materials once confirmed.
-             Update "Acquired" with Jordan's full acquisition info when known.] -->
         <div class="detail-specs">
           <div class="spec-item reveal" style="--delay:0ms">
             <div class="spec-label">Maker</div>
@@ -1313,9 +1302,6 @@
         <hr class="section-rule reveal" style="--delay:220ms">
 
         <!-- In Their Words -->
-        <!-- [TO DO: Rasuljon Mirzaakhmedon is a living, documented maker — this is an opportunity
-             for direct voice in a way the other objects don't allow. Consider reaching out, or
-             seeking out his own writing, interviews, or statements about his practice.] -->
         <p class="detail-section-label reveal">In Their Words</p>
         <div class="voices-placeholder reveal" style="--delay:80ms">
           <p class="voices-placeholder-note">Rasuljon Mirzaakhmedon is a living master weaver from Margilan in the Fergana Valley — one of the few practitioners keeping the traditional silk velvet technique alive. This section will feature his words on the practice of cut velvet weaving, the knowledge it carries, and what it means to make these objects now. Research and outreach in progress.</p>
@@ -1324,8 +1310,6 @@
         <hr class="section-rule reveal">
 
         <!-- The Object -->
-        <!-- [TO DO: Replace and expand with what you know about this specific panel —
-             its pattern, its colors, its dimensions. The text below is a starting point.] -->
         <p class="detail-section-label reveal">The Object</p>
         <p class="detail-description reveal" style="--delay:80ms">
           This panel was woven by Rasuljon Mirzaakhmedon in Margilan, Uzbekistan — the center of silk velvet production in the Fergana Valley for centuries. The technique is called <em>bakhmal</em>: a pile weave in which loops of silk thread are raised on a loom and then cut, producing a surface of dense, light-catching fiber. The cutting is what makes it velvet. The height of the pile, the precision of the cut, the quality of the silk — these are decisions the weaver makes with each pass of the blade.
@@ -1338,9 +1322,6 @@
 
         <!-- The Translation Chain -->
         <p class="detail-section-label reveal">The Translation Chain</p>
-        <!-- [TO DO: What do you know about how Jordan acquired this? Same context as the ikat?
-             Different trip, different circumstance? The fact that this has a known maker
-             changes the nature of the acquisition question.] -->
         <p class="detail-description reveal" style="--delay:80ms">
           Mary Anne Jordan acquired this panel — the circumstances of that acquisition are not yet documented here. [To be expanded as research continues.]
         </p>
@@ -1349,7 +1330,6 @@
         </p>
 
         <div class="scan-note">
-          <!-- [TO DO: fill in from your actual scan experience when the 3D model is complete] -->
           <p class="scan-captured reveal" style="--delay:0ms">[To be written once the scan is complete — what the photogrammetry captured of this surface.]</p>
           <p class="scan-missed reveal" style="--delay:300ms">The particular quality of cut silk pile — the way it absorbs and reflects light differently depending on the angle, the direction of the nap. The softness. The smell of the fiber. The weight of a panel made entirely of silk. The sound of the blade that made it velvet instead of something else.</p>
         </div>
@@ -1358,7 +1338,6 @@
 
         <!-- Record -->
         <p class="detail-section-label reveal">Record</p>
-        <!-- [TO DO: fill in dimensions, date, exact origin once confirmed] -->
         <div class="detail-specs">
           <div class="spec-item reveal" style="--delay:0ms">
             <div class="spec-label">Maker</div>
@@ -1395,6 +1374,212 @@
         </div>
 
         <a href="https://kutextiles.omeka.net/items/show/11" class="archive-link reveal" target="_blank" rel="noopener">View in the Living Archive →</a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Chullo ── -->
+  <section class="detail-section" id="detail-chullo">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/hat.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Peruvian chullo knitted cap with llama and human figure motifs">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">Peru · Andes</p>
+        <h1 class="reveal" style="--delay:80ms">Chullo (Knitted Cap)</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Andean textile scholars, Quechua and Aymara weavers and knitters, and voices from the communities where chullo-making continues — their words on the meanings encoded in pattern and color, regional variations, and the place of these objects in highland life. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          A chullo — the classic Andean knitted cap with ear flaps and a pointed crown ending in a loop. The form is immediately recognizable: conical, densely knitted, banded with color. This one carries llamas or alpacas in the burgundy bands, human figures (possibly herders), and geometric motifs in magenta, green, purple, yellow, and cream.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Chullos are made using stranded colorwork — carrying multiple colors per row to build pattern. The technique produces a double-thick fabric, warm enough for high-altitude cold. The pointed top and ear flaps are functional: they keep out wind. But form and pattern also carry meaning. Regional styles, family patterns, and individual expression all layer into what might look, from a distance, like simple folk craft.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          This chullo's specific origin — Cusco region? Puno? Lake Titicaca area? — is not yet confirmed. The style suggests the southern Peruvian or Bolivian highlands, where this form of knitting has deep roots. Whether it was made for local use, for sale to tourists, or somewhere in between is an open question.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          How this chullo came to the KU collection is not yet documented here. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Andean textiles have entered Western collections through many channels: ethnographic expeditions, tourist markets, fair trade organizations, dealers, and individual travelers. The conditions under which an object was made — and the circumstances of its departure — shape what it is when it arrives.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Peru [region to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Stranded colorwork knitting</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Wool [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">[to be added]</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Shisha ── -->
+  <section class="detail-section" id="detail-shisha">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/mirrors%202.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Shisha mirror work embroidery panel from Gujarat or Rajasthan, India">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">India · Gujarat or Rajasthan</p>
+        <h1 class="reveal" style="--delay:80ms">Shisha Embroidery Panel</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Gujarati and Rajasthani textile scholars, embroiderers from Kutch and surrounding regions, and voices from the communities — Rabari, Ahir, Mutwa, Jat — where shisha work continues. Their words on the technique, its meanings, and its place in dowry traditions and daily life. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          A panel of shisha (mirror work) embroidery on a red cotton ground. Small circular mirrors — pieces of mica or glass — are held in place by rings of embroidery stitches, their reflective surfaces catching light and movement. Between them, dense satin stitch fills geometric fields in deep blue, teal, gold, and white.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          The central motifs are hourglass or X-shaped forms, outlined in white chain stitch, repeated in two stacked panels. Multiple decorative borders — triangular patterns, diamond chains, running stitches — frame the composition. The raw, frayed edges suggest this piece was cut from a larger textile: perhaps a bag, a wall hanging, an animal trapping, or part of a garment.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          This style of work is characteristic of the Kutch region of Gujarat, or related communities across the India-Pakistan border in Sindh. Pastoralist groups — Rabari, Ahir, Mutwa, Jat — have long traditions of shisha embroidery, made for dowry, domestic use, and the decoration of animals. The mirrors are not merely decorative. In some traditions, they are believed to deflect the evil eye, turning malevolent gazes back on themselves.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          How this panel came to the KU collection is not yet documented here. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Kutchi and Sindhi textiles have entered Western collections through colonial-era acquisition, the mid-20th century craft revival movement, tourist markets, fair trade organizations, and dealers. The cutting of this panel from a larger whole — and the circumstances of that separation — are part of its history, even if unrecorded.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Gujarat or Rajasthan, India [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Shisha (mirror work) embroidery, satin stitch</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Cotton, thread, mirrors (glass or mica)</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">[to be added]</div>
+          </div>
+        </div>
 
       </div>
     </div>
