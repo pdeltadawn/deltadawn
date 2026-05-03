@@ -216,10 +216,64 @@
       letter-spacing: 0.01em;
     }
 
-    /* White nav when on home page */
+    /* White nav when on landing page */
     body:not([class]) nav,
     body[class=""] nav {
       background: linear-gradient(to bottom, #ffffff 70%, transparent);
+    }
+
+    /* ── Landing Page ── */
+    .landing {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 3rem;
+      background: #ffffff;
+      cursor: pointer;
+      transition: opacity 0.4s ease;
+    }
+
+    .landing:hover .landing-enter {
+      opacity: 1;
+    }
+
+    .landing-title {
+      font-family: 'Crimson Text', serif;
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text);
+      letter-spacing: 0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .landing-subtitle {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 380px;
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+      margin-bottom: 3rem;
+    }
+
+    .landing-enter {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      opacity: 0.6;
+      transition: opacity 0.3s ease;
+      padding: 0.8rem 1.5rem;
+      border: 1px solid var(--accent);
+      border-radius: 2px;
+    }
+
+    .landing-enter:hover {
+      opacity: 1;
     }
 
     .scroll-hint {
@@ -876,26 +930,22 @@
 
   <!-- Navigation -->
   <nav>
-    <a href="#" class="logo" onclick="showHome(); return false;">Living Archive of Textiles + Fiber</a>
+    <a href="#" class="logo" onclick="showLanding(); return false;">Living Archive of Textiles + Fiber</a>
     <ul class="nav-links">
       <li><a href="#" onclick="showHome(); return false;">Collection</a></li>
       <li><a href="methodology.html">Methodology</a></li>
     </ul>
   </nav>
 
-  <!-- Hero -->
-  <section class="hero" id="home">
-    <h1>
-      <span class="h-large">Things Made</span>
-      <span class="h-connector">by</span>
-      <span class="h-large">Hand</span>
-    </h1>
-    <p class="hero-intro">A 3D digital exhibition of fiber and textile objects from the KU collection. Rotate, zoom, and examine structures that hands once made.</p>
-    <div class="scroll-hint">Scroll to explore</div>
+  <!-- Landing Page -->
+  <section class="landing" id="landing" onclick="enterExhibition()">
+    <h1 class="landing-title">Woven Worlds</h1>
+    <p class="landing-subtitle">A 3D digital exhibition of fiber and textile objects from the KU collection.</p>
+    <div class="landing-enter">Enter Exhibition</div>
   </section>
 
-  <!-- Collection -->
-  <section class="collection" id="collection">
+  <!-- Collection (hidden initially) -->
+  <section class="collection" id="collection" style="display: none;">
     <div class="section-header">
       <p class="section-label">The Collection</p>
       <h2>Objects in the Exhibition</h2>
@@ -907,7 +957,7 @@
       <!-- Card 1: Damask -->
       <article class="object-card" onclick="showDetail('damask')">
         <div class="model-container">
-          <img src="damask.jpg" alt="Figural damask fragment with bar scene" class="card-image">
+          <img src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/damask.jpg" alt="Figural damask fragment" class="card-image">
         </div>
         <div class="object-info">
           <h3 class="object-title">Figural Damask Fragment</h3>
@@ -938,7 +988,7 @@
       <!-- Card 3: Ikat -->
       <article class="object-card" onclick="showDetail('ikat')">
         <div class="model-container">
-          <img src="ikat.jpg" alt="Uzbek ikat textile panel" class="card-image">
+          <img src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/ikat.jpg" alt="Uzbek ikat panel" class="card-image">
         </div>
         <div class="object-info">
           <h3 class="object-title">Uzbek Ikat Panel</h3>
@@ -1724,7 +1774,7 @@
   </section>
 
   <!-- Footer -->
-  <footer id="footer">
+  <footer id="footer" style="display: none;">
     <p>Living Archive of Textiles + Fiber · University of Kansas</p>
     <p>3D scanning via photogrammetry</p>
   </footer>
@@ -1754,8 +1804,15 @@
     }
 
     // ── Navigation ──
+    function enterExhibition() {
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('collection').style.display = 'block';
+      document.getElementById('footer').style.display = 'flex';
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+
     function showDetail(id) {
-      document.getElementById('home').style.display = 'none';
+      document.getElementById('landing').style.display = 'none';
       document.getElementById('collection').style.display = 'none';
       document.getElementById('footer').style.display = 'none';
 
@@ -1781,17 +1838,34 @@
         el.classList.remove('active');
       });
 
-      // Return to home (remove class entirely so nav returns to white)
+      // Return to collection (remove class entirely so nav returns to white)
       document.body.removeAttribute('class');
 
-      document.getElementById('home').style.display = 'flex';
+      document.getElementById('landing').style.display = 'none';
       document.getElementById('collection').style.display = 'block';
       document.getElementById('footer').style.display = 'flex';
     }
 
     function showHome() {
       hideDetail();
+      document.getElementById('landing').style.display = 'none';
+      document.getElementById('collection').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function showLanding() {
+      if (revealObserver) revealObserver.disconnect();
+      
+      document.querySelectorAll('.detail-section').forEach(el => {
+        el.classList.remove('active');
+      });
+      
+      document.body.removeAttribute('class');
+      
+      document.getElementById('landing').style.display = 'flex';
+      document.getElementById('collection').style.display = 'none';
+      document.getElementById('footer').style.display = 'none';
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
     // Escape key
