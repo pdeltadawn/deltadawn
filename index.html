@@ -125,6 +125,23 @@
       );
     }
 
+    /* ── Sash: deep forest green/purple world ── */
+    body.detail-sash {
+      --bg: #141a16;
+      --text: #ede9e0;
+      --muted: #a0b098;
+      --muted-light: #5a6a58;
+      --card-bg: #1c241e;
+      --border: rgba(255, 255, 255, 0.1);
+      background: linear-gradient(
+        160deg,
+        #0a100c 0%,
+        #121a14 30%,
+        #182018 65%,
+        #141a16 100%
+      );
+    }
+
     /* ── Navigation ── */
     nav {
       position: fixed;
@@ -1065,6 +1082,22 @@
         </div>
       </article>
 
+      <!-- Card 8: Guatemalan Sash -->
+      <article class="object-card" onclick="showDetail('sash')">
+        <div class="model-container">
+          <img src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/sash.jpg" alt="Guatemalan faja with brocade patterning" class="card-image">
+        </div>
+        <div class="object-info">
+          <h3 class="object-title">Faja (Sash)</h3>
+          <p class="object-meta">Guatemala · Maya Highlands</p>
+          <div class="object-tags">
+            <span class="tag">brocade</span>
+            <span class="tag">backstrap loom</span>
+            <span class="tag">cotton</span>
+          </div>
+        </div>
+      </article>
+
 
     </div>
   </section>
@@ -1754,6 +1787,109 @@
           <div class="spec-item reveal" style="--delay:200ms">
             <div class="spec-label">Materials</div>
             <div class="spec-value">Wool [to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:250ms">
+            <div class="spec-label">Dimensions</div>
+            <div class="spec-value">[to be measured]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:300ms">
+            <div class="spec-label">Acquired</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:350ms">
+            <div class="spec-label">Scan date</div>
+            <div class="spec-value">Not yet scanned</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Detail: Sash (Guatemalan) ── -->
+  <section class="detail-section" id="detail-sash">
+    <a href="#" class="back-link" onclick="hideDetail(); return false;">← Back to collection</a>
+
+    <div class="detail-grid">
+
+      <div class="detail-model">
+        <div class="detail-model-container">
+          <model-viewer
+            src="https://pub-1ef2450353b94218932713fa5d552751.r2.dev/sash.glb"
+            camera-controls
+            auto-rotate
+            rotation-per-second="8deg"
+            shadow-intensity="0.8"
+            exposure="1.1"
+            environment-image="neutral"
+            alt="Guatemalan faja with brocade patterning">
+          </model-viewer>
+          <div class="interaction-hint">drag to rotate · scroll to zoom</div>
+        </div>
+      </div>
+
+      <div class="detail-info">
+        <p class="detail-object-label reveal" style="--delay:0ms">Guatemala · Maya Highlands</p>
+        <h1 class="reveal" style="--delay:80ms">Faja (Sash)</h1>
+        <p class="detail-meta reveal" style="--delay:160ms">[Date to be confirmed] · University of Kansas Textiles + Fiber Collection</p>
+
+        <hr class="section-rule reveal" style="--delay:220ms">
+
+        <!-- In Their Words -->
+        <p class="detail-section-label reveal">In Their Words</p>
+        <div class="voices-placeholder reveal" style="--delay:80ms">
+          <p class="voices-placeholder-note">This section will feature writing by Maya textile scholars, weavers from Guatemala's highland communities, and voices from the regions where backstrap loom weaving continues — their words on the meanings carried in pattern and color, the role of fajas in daily life and ceremony, and the knowledge passed through generations of weavers. Research in progress.</p>
+        </div>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Object -->
+        <p class="detail-section-label reveal">The Object</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          A faja — a woven sash from the Maya highlands of Guatemala. Woven on a backstrap loom with supplementary weft brocade, the textile shows its two faces: the colorful patterned side where the brocade dominates, and the grey reverse where the ground weave structure is visible.
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          The motifs are arranged in horizontal bands — birds (possibly stylized quetzals or doves), human figures, and geometric patterns common in Maya textile iconography. The color palette includes deep greens, purples, magentas, pinks, and cream. At each end, multicolor braided cords serve as ties, finished with tassels.
+        </p>
+        <p class="detail-description reveal" style="--delay:240ms">
+          Fajas like this are worn wrapped around the waist to secure the corte (skirt) or pantalón. They are both functional and markers of community identity — different Maya towns have signature color combinations and motifs that make regional attribution possible, though specific identification requires further research.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- The Translation Chain -->
+        <p class="detail-section-label reveal">The Translation Chain</p>
+        <p class="detail-description reveal" style="--delay:80ms">
+          How this faja came to the KU collection is not yet documented here. A paper tag is visible on one end, which may contain acquisition information. [To be expanded as research continues.]
+        </p>
+        <p class="detail-description reveal" style="--delay:160ms">
+          Guatemalan textiles have entered Western collections through ethnographic expeditions, tourist markets, fair trade organizations, dealers, and individual travelers. Whether this faja was worn, gifted, sold, or made specifically for outside exchange remains an open question.
+        </p>
+
+        <hr class="section-rule reveal">
+
+        <!-- Record -->
+        <p class="detail-section-label reveal">Record</p>
+        <div class="detail-specs">
+          <div class="spec-item reveal" style="--delay:0ms">
+            <div class="spec-label">Maker</div>
+            <div class="spec-value">Unknown</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:50ms">
+            <div class="spec-label">Origin</div>
+            <div class="spec-value">Guatemala, Maya Highlands [region to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:100ms">
+            <div class="spec-label">Date made</div>
+            <div class="spec-value">[to be confirmed]</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:150ms">
+            <div class="spec-label">Technique</div>
+            <div class="spec-value">Backstrap loom weaving with supplementary weft brocade</div>
+          </div>
+          <div class="spec-item reveal" style="--delay:200ms">
+            <div class="spec-label">Materials</div>
+            <div class="spec-value">Cotton [to be confirmed]</div>
           </div>
           <div class="spec-item reveal" style="--delay:250ms">
             <div class="spec-label">Dimensions</div>
